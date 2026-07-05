@@ -4802,6 +4802,50 @@
       }
     }
 
+/* ===== 4 NÚT LIÊN HỆ: PC 4 NGANG - ĐIỆN THOẠI 2x2 ===== */
+
+.socials{
+  display:grid !important;
+  grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+  max-width:1080px !important;
+  gap:16px !important;
+}
+
+.social.social-icon-btn{
+  width:100% !important;
+  min-width:0 !important;
+  max-width:none !important;
+  flex:none !important;
+}
+
+.phone-icon{
+  font-size:24px;
+  line-height:1;
+  color:#fff;
+}
+
+@media (max-width:560px){
+  .socials{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:10px !important;
+    padding:12px !important;
+  }
+
+  .social.social-icon-btn{
+    width:100% !important;
+    min-width:0 !important;
+    height:54px !important;
+    padding:8px 10px !important;
+    font-size:13px !important;
+    gap:7px !important;
+  }
+
+  .brand-icon{
+    width:25px !important;
+    height:25px !important;
+    flex:0 0 25px !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -4888,7 +4932,12 @@
             </svg>
           </span>
           <span class="social-label">Bản đồ</span>
-        </a>
+        </a><a class="social social-icon-btn contact-phone"
+   href="tel:0989017704"
+   aria-label="Gọi điện thoại">
+  <span class="brand-icon phone-icon" aria-hidden="true">☎</span>
+  <span class="social-label">Điện thoại</span>
+</a>
         <div class="social-address">Đ/C: 13 Lê Hồng Phong, phường Phan Thiết, tỉnh Lâm Đồng.</div>
       </div>
     </div>
