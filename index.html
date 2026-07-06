@@ -5182,6 +5182,185 @@ html, body{
   100%{ transform:translate3d(32%,0,0) rotate(8deg) scale(1.10,1.18); opacity:.48; }
 }
 
+
+
+/* VIỄN ĐÔNG - LIQUID GLASS RÕ HƠN + XẸT SÁNG DÒNG ĐỊA CHỈ
+   Dán toàn bộ đoạn này ngay trước thẻ </style> cuối cùng trong index.html
+*/
+
+/* 1) Nền xanh đen, không quá tối */
+html, body {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(18,72,96,.34) 0%, rgba(7,31,48,.28) 34%, transparent 66%),
+    linear-gradient(145deg, #081a28 0%, #071522 48%, #0a2030 100%) !important;
+}
+
+/* 2) Gương lỏng rõ hơn cho 3 ô tên ảnh */
+.album-card .caption {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(125,210,255,.16), transparent 32%),
+    linear-gradient(135deg, rgba(14,48,84,.94), rgba(7,27,52,.88)) !important;
+  border-top: 1px solid rgba(145,215,255,.30) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 -18px 34px rgba(0,12,34,.26),
+    0 8px 24px rgba(0,8,22,.18) !important;
+  backdrop-filter: blur(10px) saturate(155%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(155%) !important;
+}
+
+.album-card .caption::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: -95% -55% !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  background:
+    radial-gradient(ellipse at 25% 48%, rgba(255,255,255,.58) 0 4%, rgba(190,230,255,.26) 13%, transparent 31%),
+    radial-gradient(ellipse at 72% 54%, rgba(255,226,190,.42) 0 4%, rgba(255,255,255,.18) 14%, transparent 34%),
+    linear-gradient(112deg, transparent 25%, rgba(255,255,255,.08) 36%, rgba(220,244,255,.62) 47%, rgba(255,232,198,.44) 54%, rgba(255,255,255,.08) 64%, transparent 76%);
+  filter: blur(4px) saturate(145%);
+  mix-blend-mode: screen;
+  transform: translate3d(-34%,0,0) rotate(-7deg) scale(1.16);
+  animation: vdLiquidCaption 4.8s ease-in-out infinite alternate;
+  opacity: .76;
+}
+
+.album-card .caption > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.album-card:nth-child(2) .caption::before { animation-delay: -1.6s; }
+.album-card:nth-child(3) .caption::before { animation-delay: -3.2s; }
+
+@keyframes vdLiquidCaption {
+  0%   { transform: translate3d(-34%,0,0) rotate(-7deg) scale(1.14,1.22); opacity:.48; }
+  50%  { transform: translate3d(2%,0,0) rotate(1deg) scale(1.22,.98); opacity:.88; }
+  100% { transform: translate3d(34%,0,0) rotate(7deg) scale(1.12,1.20); opacity:.55; }
+}
+
+/* 3) Gương lỏng rõ hơn cho 4 nút liên hệ */
+.social.social-icon-btn,
+.contact-phone {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  background:
+    radial-gradient(circle at 18% 10%, rgba(110,190,255,.18), transparent 34%),
+    linear-gradient(135deg, rgba(18,52,94,.92), rgba(10,31,62,.86)) !important;
+  border: 1px solid rgba(140,205,255,.24) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 -14px 28px rgba(0,10,32,.22),
+    0 10px 24px rgba(0,7,20,.18) !important;
+  backdrop-filter: blur(12px) saturate(165%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(165%) !important;
+}
+
+.social.social-icon-btn::before,
+.contact-phone::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: -120% -70% !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(255,255,255,.56) 0 4%, rgba(195,232,255,.24) 14%, transparent 32%),
+    linear-gradient(112deg, transparent 28%, rgba(255,255,255,.06) 38%, rgba(225,245,255,.56) 49%, rgba(255,229,195,.34) 56%, transparent 70%);
+  filter: blur(4px);
+  mix-blend-mode: screen;
+  transform: translateX(-38%) rotate(-8deg);
+  animation: vdLiquidButton 4.2s ease-in-out infinite alternate;
+  opacity: .72;
+}
+
+.social.social-icon-btn:nth-child(2)::before { animation-delay:-1s; }
+.social.social-icon-btn:nth-child(3)::before { animation-delay:-2s; }
+.social.social-icon-btn:nth-child(4)::before { animation-delay:-3s; }
+
+.social.social-icon-btn > *,
+.contact-phone > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+@keyframes vdLiquidButton {
+  0%   { transform: translateX(-40%) rotate(-8deg) scale(1.05); opacity:.42; }
+  50%  { transform: translateX(4%) rotate(1deg) scale(1.16); opacity:.84; }
+  100% { transform: translateX(40%) rotate(8deg) scale(1.06); opacity:.50; }
+}
+
+/* 4) Khung liên hệ lớn xanh đen */
+.socials {
+  position: relative !important;
+  overflow: hidden !important;
+  background:
+    radial-gradient(circle at 82% 16%, rgba(62,125,205,.20), transparent 36%),
+    linear-gradient(135deg, rgba(15,48,88,.94), rgba(8,30,58,.90)) !important;
+  border: 1px solid rgba(91,177,245,.34) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 18px 45px rgba(0,8,20,.22) !important;
+}
+
+/* 5) XẸT SÁNG riêng ở dòng Đ/C */
+.social-address {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+}
+
+.social-address::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -70% !important;
+  bottom: -70% !important;
+  left: -28% !important;
+  width: 18% !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255,255,255,.05) 20%,
+    rgba(220,244,255,.88) 48%,
+    rgba(255,236,205,.64) 58%,
+    rgba(255,255,255,.08) 76%,
+    transparent 100%
+  ) !important;
+  filter: blur(5px) !important;
+  transform: skewX(-18deg) !important;
+  animation: vdAddressShine 3.8s ease-in-out infinite !important;
+  mix-blend-mode: screen;
+}
+
+.social-address {
+  text-shadow:
+    0 0 10px rgba(205,232,255,.14),
+    0 1px 2px rgba(0,0,0,.35) !important;
+}
+
+@keyframes vdAddressShine {
+  0%, 18%   { left:-30%; opacity:0; }
+  28%       { opacity:.95; }
+  62%       { left:112%; opacity:.75; }
+  72%, 100% { left:112%; opacity:0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .album-card .caption::before,
+  .social.social-icon-btn::before,
+  .contact-phone::before,
+  .social-address::before {
+    animation: none !important;
+  }
+}
+
+
 </style>
 </head>
 <body>
