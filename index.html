@@ -5247,6 +5247,36 @@ html, body {
   .album-card .caption::before,.social.social-icon-btn::before,.contact-phone::before,.social-address::before{animation:none!important}
 }
 
+
+
+/* TINH CHINH NUT LIEN HE: KHONG LO GOC VUONG, BO GOC NHE */
+.social.social-icon-btn,
+.contact-phone {
+  border-radius: 18px !important;
+  clip-path: inset(0 round 18px) !important;
+  -webkit-clip-path: inset(0 round 18px) !important;
+  overflow: hidden !important;
+}
+
+.social.social-icon-btn::before,
+.contact-phone::before {
+  inset: 0 !important;
+  border-radius: inherit !important;
+  transform: none !important;
+  background:
+    radial-gradient(ellipse at 30% 45%, rgba(205,235,255,.18), transparent 42%),
+    linear-gradient(112deg, transparent 20%, rgba(255,255,255,.04) 36%, rgba(220,244,255,.22) 49%, rgba(255,232,205,.14) 56%, transparent 72%) !important;
+  filter: blur(3px) !important;
+  animation: vdBtnGlassSoft 5.2s ease-in-out infinite alternate !important;
+  opacity: .58 !important;
+}
+
+@keyframes vdBtnGlassSoft {
+  from { background-position: -80px 0; opacity: .35; }
+  50%  { opacity: .58; }
+  to   { background-position: 80px 0; opacity: .42; }
+}
+
 </style>
 </head>
 <body>
