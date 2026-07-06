@@ -5043,25 +5043,6 @@
       }
     }
 
-
-
-/* === VD: brighter soft address shine === */
-.social-address{position:relative!important;overflow:hidden!important;isolation:isolate!important}
-.social-address::before{
-  content:"";position:absolute;top:-130%;bottom:-130%;left:-42%;width:38%;
-  z-index:1;pointer-events:none;
-  background:linear-gradient(105deg,transparent 0%,rgba(210,238,255,.03) 16%,rgba(225,245,255,.20) 36%,rgba(255,255,255,.52) 50%,rgba(255,239,220,.20) 64%,rgba(210,238,255,.03) 84%,transparent 100%);
-  filter:blur(20px);opacity:0;mix-blend-mode:screen;
-  animation:vdAddressSoftBright 5.4s ease-in-out infinite;
-}
-.social-address>*{position:relative;z-index:2}
-@keyframes vdAddressSoftBright{
-  0%,15%{left:-42%;opacity:0}
-  28%{opacity:.78}
-  65%{left:108%;opacity:.68}
-  80%,100%{left:108%;opacity:0}
-}
-
 </style>
 </head>
 <body>
@@ -6055,72 +6036,5 @@ document.addEventListener('DOMContentLoaded', () => {
       return escapeHtml(value);
     }
   </script>
-
-
-<script>
-(function(){
-  function driveId(url){
-    if(!url) return "";
-    var s=String(url);
-    var m=s.match(/\/d\/([a-zA-Z0-9_-]{20,})/);
-    if(m) return m[1];
-    m=s.match(/[?&]id=([a-zA-Z0-9_-]{20,})/);
-    if(m) return m[1];
-    m=s.match(/googleusercontent\.com\/d\/([a-zA-Z0-9_-]{20,})/);
-    if(m) return m[1];
-    return "";
-  }
-
-  function fallbacks(url){
-    var id=driveId(url);
-    if(!id) return [];
-    return [
-      "https://drive.google.com/thumbnail?id="+encodeURIComponent(id)+"&sz=w1600",
-      "https://lh3.googleusercontent.com/d/"+encodeURIComponent(id)+"=w1600",
-      "https://drive.usercontent.google.com/download?id="+encodeURIComponent(id)+"&export=view&authuser=0"
-    ];
-  }
-
-  function prepare(img){
-    if(!img || img.dataset.vdPrepared==="1") return;
-    img.dataset.vdPrepared="1";
-    img.referrerPolicy="no-referrer";
-    img.removeAttribute("crossorigin");
-    img.dataset.vdOriginal=img.currentSrc || img.src || "";
-    img.dataset.vdFallbackIndex="0";
-  }
-
-  document.addEventListener("error",function(e){
-    var img=e.target;
-    if(!img || img.tagName!=="IMG") return;
-    prepare(img);
-    var list=fallbacks(img.dataset.vdOriginal || img.src);
-    var i=parseInt(img.dataset.vdFallbackIndex||"0",10);
-    if(i<list.length){
-      img.dataset.vdFallbackIndex=String(i+1);
-      img.src=list[i];
-    }
-  },true);
-
-  function scan(root){
-    (root||document).querySelectorAll("img").forEach(prepare);
-  }
-
-  if(document.readyState==="loading"){
-    document.addEventListener("DOMContentLoaded",function(){scan(document)},{once:true});
-  }else scan(document);
-
-  new MutationObserver(function(ms){
-    ms.forEach(function(m){
-      m.addedNodes.forEach(function(n){
-        if(n.nodeType!==1) return;
-        if(n.tagName==="IMG") prepare(n);
-        scan(n);
-      });
-    });
-  }).observe(document.documentElement,{childList:true,subtree:true});
-})();
-</script>
-
 </body>
 </html>
