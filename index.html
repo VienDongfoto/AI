@@ -5249,32 +5249,86 @@ html, body {
 
 
 
-/* TINH CHINH NUT LIEN HE: KHONG LO GOC VUONG, BO GOC NHE */
+/* TINH CHINH TU BAN DAU: BO GOC NHE + XET SANG MEM + AN TOAN MOBILE */
+
+/* Các nút liên hệ: bo góc nhẹ tương tự 3 ô ảnh */
 .social.social-icon-btn,
 .contact-phone {
-  border-radius: 18px !important;
-  clip-path: inset(0 round 18px) !important;
-  -webkit-clip-path: inset(0 round 18px) !important;
+  border-radius: 14px !important;
   overflow: hidden !important;
 }
 
+/* Hiệu ứng gương dịu, không tạo khối vuông lòi ra */
 .social.social-icon-btn::before,
 .contact-phone::before {
   inset: 0 !important;
-  border-radius: inherit !important;
-  transform: none !important;
+  border-radius: 14px !important;
   background:
-    radial-gradient(ellipse at 30% 45%, rgba(205,235,255,.18), transparent 42%),
-    linear-gradient(112deg, transparent 20%, rgba(255,255,255,.04) 36%, rgba(220,244,255,.22) 49%, rgba(255,232,205,.14) 56%, transparent 72%) !important;
-  filter: blur(3px) !important;
-  animation: vdBtnGlassSoft 5.2s ease-in-out infinite alternate !important;
-  opacity: .58 !important;
+    radial-gradient(ellipse at 28% 45%, rgba(215,240,255,.13), transparent 48%),
+    linear-gradient(112deg,
+      transparent 20%,
+      rgba(255,255,255,.025) 37%,
+      rgba(225,245,255,.16) 49%,
+      rgba(255,236,215,.09) 57%,
+      transparent 73%) !important;
+  filter: blur(5px) !important;
+  opacity: .48 !important;
+  transform: translateX(-28%) !important;
+  animation: vdBtnSoftGlass 6s ease-in-out infinite alternate !important;
 }
 
-@keyframes vdBtnGlassSoft {
-  from { background-position: -80px 0; opacity: .35; }
-  50%  { opacity: .58; }
-  to   { background-position: 80px 0; opacity: .42; }
+@keyframes vdBtnSoftGlass {
+  from { transform: translateX(-28%); opacity: .30; }
+  50%  { opacity: .48; }
+  to   { transform: translateX(28%); opacity: .34; }
+}
+
+/* Dòng địa chỉ: xẹt sáng mềm, rộng và mờ, không còn vệt cứng */
+.social-address::before {
+  top: -100% !important;
+  bottom: -100% !important;
+  width: 32% !important;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(210,238,255,.02) 18%,
+    rgba(220,244,255,.13) 38%,
+    rgba(255,255,255,.28) 50%,
+    rgba(255,236,215,.13) 62%,
+    rgba(210,238,255,.02) 82%,
+    transparent 100%
+  ) !important;
+  filter: blur(16px) !important;
+  opacity: .55 !important;
+  animation: vdAddressSoftShine 5.8s ease-in-out infinite !important;
+}
+
+@keyframes vdAddressSoftShine {
+  0%, 18%   { left: -42%; opacity: 0; }
+  32%       { opacity: .42; }
+  64%       { left: 112%; opacity: .36; }
+  78%, 100% { left: 112%; opacity: 0; }
+}
+
+/* Mobile: giữ nguyên ảnh, không áp hiệu ứng nặng lên vùng ảnh */
+@media (max-width: 768px) {
+  .album-card img,
+  .card img,
+  picture img {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .album-card .caption::before,
+  .social.social-icon-btn::before,
+  .contact-phone::before {
+    filter: blur(3px) !important;
+  }
+
+  .social-address::before {
+    filter: blur(10px) !important;
+  }
 }
 
 </style>
