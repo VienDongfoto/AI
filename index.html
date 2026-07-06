@@ -5600,6 +5600,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+
+    function mobileSafeImageUrl(url){
+      url = String(url || '').trim();
+      if (!url) return '';
+
+      // Google Drive file links -> direct image delivery URL, ổn định hơn trên Safari/iPhone.
+      let m = url.match(/drive\.google\.com\/file\/d\/([^\/?#]+)/i);
+      if (!m) m = url.match(/[?&]id=([^&#]+)/i);
+      if (m && m[1]) {
+        return 'https://lh3.googleusercontent.com/d/' + encodeURIComponent(m[1]) + '=w1600';
+      }
+
+      return url;
+    }
+
+    function applyMobileImageSafety(img){
+      if (!img) return;
+      img.decoding = 'async';
+      img.referrerPolicy = 'no-referrer';
+      img.setAttribute('referrerpolicy', 'no-referrer');
+    }
+
+    // Áp dụng cả cho ảnh được tạo động sau khi API trả dữ liệu.
+    const vdImageObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (!node || node.nodeType !== 1) return;
+          if (node.tagName === 'IMG') applyMobileImageSafety(node);
+          node.querySelectorAll && node.querySelectorAll('img').forEach(applyMobileImageSafety);
+        });
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('img').forEach(applyMobileImageSafety);
+      vdImageObserver.observe(document.body, { childList:true, subtree:true });
+    });
+
     function loadSiteSettings(){
       fetchSiteSettings()
         .then((settings) => {
@@ -5608,7 +5646,7 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById('siteName').textContent = settings.name || 'NHIẾP ẢNH VIỄN ĐÔNG';
           document.getElementById('siteSubtitle').textContent = settings.subtitle || '';
           if (settings.logoDataUri) {
-            const logoUrl = String(settings.logoDataUri);
+            const logoUrl = mobileSafeImageUrl(settings.logoDataUri);
             document.getElementById('siteLogo').src =
               logoUrl.indexOf('data:') === 0
                 ? logoUrl
@@ -5690,7 +5728,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="media-shell">
           <div class="album-frame">
             ${images.map((img, index) => `
-              <img class="${index === 0 ? 'active' : ''}" src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(album.title)}" style="object-fit:${escapeAttr(album.coverFit || 'cover')};object-position:${escapeAttr(album.coverPosition || 'center top')};transform-origin:center top;">
+              <img class="${index === 0 ? 'active' : ''}" src="${escapeAttr(mobileSafeImageUrl(img.thumbUrl))}" referrerpolicy="no-referrer" alt="${escapeAttr(album.title)}" style="object-fit:${escapeAttr(album.coverFit || 'cover')};object-position:${escapeAttr(album.coverPosition || 'center top')};transform-origin:center top;">
             `).join('')}
           </div>
         </div>
@@ -5790,7 +5828,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const button = document.createElement('button');
         button.className = 'detail-photo';
         button.type = 'button';
-        button.innerHTML = `<img src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
+        button.innerHTML = `<img src="${escapeAttr(mobileSafeImageUrl(img.thumbUrl))}" referrerpolicy="no-referrer" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
         button.addEventListener('click', () => openLightbox(index));
         grid.appendChild(button);
       });
@@ -5817,7 +5855,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const button = document.createElement('button');
             button.className = 'detail-photo';
             button.type = 'button';
-            button.innerHTML = `<img src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
+            button.innerHTML = `<img src="${escapeAttr(mobileSafeImageUrl(img.thumbUrl))}" referrerpolicy="no-referrer" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
             button.addEventListener('click', () => openLightbox(index));
             grid.appendChild(button);
           });
