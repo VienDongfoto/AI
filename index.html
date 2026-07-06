@@ -5045,53 +5045,21 @@
 
 
 
-/* === VD PATCH: Safari image loading + brighter soft address shine === */
-.social-address{
-  position:relative !important;
-  overflow:hidden !important;
-  isolation:isolate !important;
-  background:linear-gradient(135deg,rgba(8,31,57,.96),rgba(10,38,69,.94)) !important;
-}
-
+/* === VD: brighter soft address shine === */
+.social-address{position:relative!important;overflow:hidden!important;isolation:isolate!important}
 .social-address::before{
-  content:"" !important;
-  position:absolute !important;
-  top:-120% !important;
-  bottom:-120% !important;
-  left:-38% !important;
-  width:34% !important;
-  z-index:1 !important;
-  pointer-events:none !important;
-  background:linear-gradient(
-    105deg,
-    transparent 0%,
-    rgba(205,235,255,.03) 16%,
-    rgba(218,241,255,.18) 35%,
-    rgba(255,255,255,.48) 50%,
-    rgba(255,238,218,.20) 64%,
-    rgba(205,235,255,.04) 84%,
-    transparent 100%
-  ) !important;
-  filter:blur(18px) !important;
-  opacity:0;
-  animation:vdAddressBrighterSoftShine 5.2s ease-in-out infinite !important;
-  mix-blend-mode:screen;
+  content:"";position:absolute;top:-130%;bottom:-130%;left:-42%;width:38%;
+  z-index:1;pointer-events:none;
+  background:linear-gradient(105deg,transparent 0%,rgba(210,238,255,.03) 16%,rgba(225,245,255,.20) 36%,rgba(255,255,255,.52) 50%,rgba(255,239,220,.20) 64%,rgba(210,238,255,.03) 84%,transparent 100%);
+  filter:blur(20px);opacity:0;mix-blend-mode:screen;
+  animation:vdAddressSoftBright 5.4s ease-in-out infinite;
 }
-
-.social-address > *{
-  position:relative;
-  z-index:2;
-}
-
-@keyframes vdAddressBrighterSoftShine{
-  0%,16%{left:-38%;opacity:0}
-  28%{opacity:.72}
-  64%{left:108%;opacity:.62}
-  78%,100%{left:108%;opacity:0}
-}
-
-@media (prefers-reduced-motion:reduce){
-  .social-address::before{animation:none !important}
+.social-address>*{position:relative;z-index:2}
+@keyframes vdAddressSoftBright{
+  0%,15%{left:-42%;opacity:0}
+  28%{opacity:.78}
+  65%{left:108%;opacity:.68}
+  80%,100%{left:108%;opacity:0}
 }
 
 </style>
@@ -5102,7 +5070,7 @@
       <header class="hero" id="mainHero">
         <div class="brand-row">
           <div class="logo" id="siteLogoWrap">
-          <img id="siteLogo" class="logo-base" alt="" decoding="async" referrerpolicy="no-referrer">
+          <img id="siteLogo" class="logo-base" alt="" decoding="async">
           <canvas id="siteLogoSweepCanvas" aria-hidden="true"></canvas>
         </div>
           <div class="brand-copy">
@@ -5741,7 +5709,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="media-shell">
           <div class="album-frame">
             ${images.map((img, index) => `
-              <img class="${index === 0 ? 'active' : ''}" referrerpolicy="no-referrer" src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(album.title)}" style="object-fit:${escapeAttr(album.coverFit || 'cover')};object-position:${escapeAttr(album.coverPosition || 'center top')};transform-origin:center top;">
+              <img class="${index === 0 ? 'active' : ''}" src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(album.title)}" style="object-fit:${escapeAttr(album.coverFit || 'cover')};object-position:${escapeAttr(album.coverPosition || 'center top')};transform-origin:center top;">
             `).join('')}
           </div>
         </div>
@@ -5841,7 +5809,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const button = document.createElement('button');
         button.className = 'detail-photo';
         button.type = 'button';
-        button.innerHTML = `<img referrerpolicy="no-referrer" src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
+        button.innerHTML = `<img src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
         button.addEventListener('click', () => openLightbox(index));
         grid.appendChild(button);
       });
@@ -5868,7 +5836,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const button = document.createElement('button');
             button.className = 'detail-photo';
             button.type = 'button';
-            button.innerHTML = `<img referrerpolicy="no-referrer" src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
+            button.innerHTML = `<img src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
             button.addEventListener('click', () => openLightbox(index));
             grid.appendChild(button);
           });
@@ -5881,7 +5849,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const button = document.createElement('button');
         button.className = 'detail-photo';
         button.type = 'button';
-        button.innerHTML = `<img referrerpolicy="no-referrer" src="${escapeAttr(pair.after.thumbUrl)}" alt="${escapeAttr(pair.label || album.title)}" loading="lazy">`;
+        button.innerHTML = `<img src="${escapeAttr(pair.after.thumbUrl)}" alt="${escapeAttr(pair.label || album.title)}" loading="lazy">`;
         button.addEventListener('click', () => openCompareLightbox(index));
         grid.appendChild(button);
       });
@@ -6091,35 +6059,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
 (function(){
-  function applySafariImagePolicy(root){
-    (root || document).querySelectorAll('img').forEach(function(img){
-      img.referrerPolicy = 'no-referrer';
-      img.removeAttribute('crossorigin');
-    });
+  function driveId(url){
+    if(!url) return "";
+    var s=String(url);
+    var m=s.match(/\/d\/([a-zA-Z0-9_-]{20,})/);
+    if(m) return m[1];
+    m=s.match(/[?&]id=([a-zA-Z0-9_-]{20,})/);
+    if(m) return m[1];
+    m=s.match(/googleusercontent\.com\/d\/([a-zA-Z0-9_-]{20,})/);
+    if(m) return m[1];
+    return "";
   }
 
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){
-      applySafariImagePolicy(document);
-    }, {once:true});
-  }else{
-    applySafariImagePolicy(document);
+  function fallbacks(url){
+    var id=driveId(url);
+    if(!id) return [];
+    return [
+      "https://drive.google.com/thumbnail?id="+encodeURIComponent(id)+"&sz=w1600",
+      "https://lh3.googleusercontent.com/d/"+encodeURIComponent(id)+"=w1600",
+      "https://drive.usercontent.google.com/download?id="+encodeURIComponent(id)+"&export=view&authuser=0"
+    ];
   }
 
-  var observer = new MutationObserver(function(mutations){
-    mutations.forEach(function(m){
-      m.addedNodes.forEach(function(node){
-        if(node.nodeType !== 1) return;
-        if(node.tagName === 'IMG'){
-          node.referrerPolicy = 'no-referrer';
-          node.removeAttribute('crossorigin');
-        }
-        applySafariImagePolicy(node);
+  function prepare(img){
+    if(!img || img.dataset.vdPrepared==="1") return;
+    img.dataset.vdPrepared="1";
+    img.referrerPolicy="no-referrer";
+    img.removeAttribute("crossorigin");
+    img.dataset.vdOriginal=img.currentSrc || img.src || "";
+    img.dataset.vdFallbackIndex="0";
+  }
+
+  document.addEventListener("error",function(e){
+    var img=e.target;
+    if(!img || img.tagName!=="IMG") return;
+    prepare(img);
+    var list=fallbacks(img.dataset.vdOriginal || img.src);
+    var i=parseInt(img.dataset.vdFallbackIndex||"0",10);
+    if(i<list.length){
+      img.dataset.vdFallbackIndex=String(i+1);
+      img.src=list[i];
+    }
+  },true);
+
+  function scan(root){
+    (root||document).querySelectorAll("img").forEach(prepare);
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",function(){scan(document)},{once:true});
+  }else scan(document);
+
+  new MutationObserver(function(ms){
+    ms.forEach(function(m){
+      m.addedNodes.forEach(function(n){
+        if(n.nodeType!==1) return;
+        if(n.tagName==="IMG") prepare(n);
+        scan(n);
       });
     });
-  });
-
-  observer.observe(document.documentElement, {childList:true, subtree:true});
+  }).observe(document.documentElement,{childList:true,subtree:true});
 })();
 </script>
 
