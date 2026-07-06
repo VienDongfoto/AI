@@ -5045,92 +5045,52 @@
 
 
 
-/* === VIEN DONG: hiệu ứng nhẹ, không đụng vào ảnh và logo === */
-html, body{
-  background:
-    radial-gradient(circle at 50% 0%, rgba(18,72,96,.30) 0%, rgba(7,31,48,.24) 34%, transparent 66%),
-    linear-gradient(145deg,#081a28 0%,#071522 48%,#0a2030 100%) !important;
-}
-
-/* 4 nút liên hệ */
-.social.social-icon-btn,
-.contact-phone{
-  position:relative !important;
-  overflow:hidden !important;
-  isolation:isolate !important;
-  border-radius:14px !important;
-  background:linear-gradient(135deg,rgba(22,61,105,.94),rgba(10,34,66,.90)) !important;
-  border:1px solid rgba(140,205,255,.24) !important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.16), inset 0 -10px 20px rgba(0,10,32,.16) !important;
-}
-
-.social.social-icon-btn::before,
-.contact-phone::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-  border-radius:inherit;
-  background:
-    radial-gradient(ellipse at 28% 45%,rgba(215,240,255,.12),transparent 48%),
-    linear-gradient(112deg,transparent 20%,rgba(255,255,255,.02) 37%,rgba(225,245,255,.15) 49%,rgba(255,236,215,.08) 57%,transparent 73%);
-  filter:blur(5px);
-  opacity:.44;
-  animation:vdBtnSoftGlass 6s ease-in-out infinite alternate;
-}
-
-.social.social-icon-btn > *,
-.contact-phone > *{
-  position:relative;
-  z-index:1;
-}
-
-@keyframes vdBtnSoftGlass{
-  from{transform:translateX(-28%);opacity:.28}
-  50%{opacity:.44}
-  to{transform:translateX(28%);opacity:.32}
-}
-
-/* Khung liên hệ */
-.socials{
-  background:
-    radial-gradient(circle at 82% 16%,rgba(62,125,205,.18),transparent 36%),
-    linear-gradient(135deg,rgba(15,48,88,.96),rgba(8,30,58,.94)) !important;
-  border:1px solid rgba(91,177,245,.32) !important;
-}
-
-/* Dòng địa chỉ: vệt sáng mềm */
+/* === VD PATCH: Safari image loading + brighter soft address shine === */
 .social-address{
   position:relative !important;
   overflow:hidden !important;
   isolation:isolate !important;
+  background:linear-gradient(135deg,rgba(8,31,57,.96),rgba(10,38,69,.94)) !important;
 }
 
 .social-address::before{
-  content:"";
-  position:absolute;
-  top:-100%;
-  bottom:-100%;
-  left:-42%;
-  width:32%;
-  z-index:1;
-  pointer-events:none;
-  background:linear-gradient(105deg,transparent 0%,rgba(210,238,255,.02) 18%,rgba(220,244,255,.12) 38%,rgba(255,255,255,.26) 50%,rgba(255,236,215,.12) 62%,rgba(210,238,255,.02) 82%,transparent 100%);
-  filter:blur(16px);
-  animation:vdAddressSoftShine 5.8s ease-in-out infinite;
+  content:"" !important;
+  position:absolute !important;
+  top:-120% !important;
+  bottom:-120% !important;
+  left:-38% !important;
+  width:34% !important;
+  z-index:1 !important;
+  pointer-events:none !important;
+  background:linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(205,235,255,.03) 16%,
+    rgba(218,241,255,.18) 35%,
+    rgba(255,255,255,.48) 50%,
+    rgba(255,238,218,.20) 64%,
+    rgba(205,235,255,.04) 84%,
+    transparent 100%
+  ) !important;
+  filter:blur(18px) !important;
+  opacity:0;
+  animation:vdAddressBrighterSoftShine 5.2s ease-in-out infinite !important;
+  mix-blend-mode:screen;
 }
 
-@keyframes vdAddressSoftShine{
-  0%,18%{left:-42%;opacity:0}
-  32%{opacity:.40}
-  64%{left:112%;opacity:.34}
-  78%,100%{left:112%;opacity:0}
+.social-address > *{
+  position:relative;
+  z-index:2;
+}
+
+@keyframes vdAddressBrighterSoftShine{
+  0%,16%{left:-38%;opacity:0}
+  28%{opacity:.72}
+  64%{left:108%;opacity:.62}
+  78%,100%{left:108%;opacity:0}
 }
 
 @media (prefers-reduced-motion:reduce){
-  .social.social-icon-btn::before,
-  .contact-phone::before,
   .social-address::before{animation:none !important}
 }
 
@@ -5142,7 +5102,7 @@ html, body{
       <header class="hero" id="mainHero">
         <div class="brand-row">
           <div class="logo" id="siteLogoWrap">
-          <img id="siteLogo" class="logo-base" alt="" decoding="async">
+          <img id="siteLogo" class="logo-base" alt="" decoding="async" referrerpolicy="no-referrer">
           <canvas id="siteLogoSweepCanvas" aria-hidden="true"></canvas>
         </div>
           <div class="brand-copy">
@@ -5781,7 +5741,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="media-shell">
           <div class="album-frame">
             ${images.map((img, index) => `
-              <img class="${index === 0 ? 'active' : ''}" src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(album.title)}" style="object-fit:${escapeAttr(album.coverFit || 'cover')};object-position:${escapeAttr(album.coverPosition || 'center top')};transform-origin:center top;">
+              <img class="${index === 0 ? 'active' : ''}" referrerpolicy="no-referrer" src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(album.title)}" style="object-fit:${escapeAttr(album.coverFit || 'cover')};object-position:${escapeAttr(album.coverPosition || 'center top')};transform-origin:center top;">
             `).join('')}
           </div>
         </div>
@@ -5881,7 +5841,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const button = document.createElement('button');
         button.className = 'detail-photo';
         button.type = 'button';
-        button.innerHTML = `<img src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
+        button.innerHTML = `<img referrerpolicy="no-referrer" src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
         button.addEventListener('click', () => openLightbox(index));
         grid.appendChild(button);
       });
@@ -5908,7 +5868,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const button = document.createElement('button');
             button.className = 'detail-photo';
             button.type = 'button';
-            button.innerHTML = `<img src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
+            button.innerHTML = `<img referrerpolicy="no-referrer" src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
             button.addEventListener('click', () => openLightbox(index));
             grid.appendChild(button);
           });
@@ -5921,7 +5881,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const button = document.createElement('button');
         button.className = 'detail-photo';
         button.type = 'button';
-        button.innerHTML = `<img src="${escapeAttr(pair.after.thumbUrl)}" alt="${escapeAttr(pair.label || album.title)}" loading="lazy">`;
+        button.innerHTML = `<img referrerpolicy="no-referrer" src="${escapeAttr(pair.after.thumbUrl)}" alt="${escapeAttr(pair.label || album.title)}" loading="lazy">`;
         button.addEventListener('click', () => openCompareLightbox(index));
         grid.appendChild(button);
       });
@@ -6127,5 +6087,41 @@ document.addEventListener('DOMContentLoaded', () => {
       return escapeHtml(value);
     }
   </script>
+
+
+<script>
+(function(){
+  function applySafariImagePolicy(root){
+    (root || document).querySelectorAll('img').forEach(function(img){
+      img.referrerPolicy = 'no-referrer';
+      img.removeAttribute('crossorigin');
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      applySafariImagePolicy(document);
+    }, {once:true});
+  }else{
+    applySafariImagePolicy(document);
+  }
+
+  var observer = new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      m.addedNodes.forEach(function(node){
+        if(node.nodeType !== 1) return;
+        if(node.tagName === 'IMG'){
+          node.referrerPolicy = 'no-referrer';
+          node.removeAttribute('crossorigin');
+        }
+        applySafariImagePolicy(node);
+      });
+    });
+  });
+
+  observer.observe(document.documentElement, {childList:true, subtree:true});
+})();
+</script>
+
 </body>
 </html>
