@@ -5151,6 +5151,107 @@
 }
 </style>
 
+
+<style>
+/* 1) Các dấu tròn: đậm và rõ hơn */
+.dots span,
+.slider-dots span,
+.carousel-dots span,
+.dot{
+  opacity: .88 !important;
+  filter: brightness(.86) contrast(1.08) !important;
+}
+.dots span.active,
+.slider-dots span.active,
+.carousel-dots span.active,
+.dot.active{
+  opacity: 1 !important;
+  filter: brightness(.95) contrast(1.12) !important;
+}
+
+/* 2) Vùng phát sáng cạnh đường chỉ: tăng rất nhẹ khoảng 5% */
+.site-box::before{
+  box-shadow:
+    0 0 19px rgba(92,111,220,.085),
+    inset 0 0 18px rgba(107,126,235,.045) !important;
+}
+.site-box::after{
+  box-shadow:
+    0 0 21px rgba(112,91,220,.075),
+    inset 0 0 19px rgba(126,108,238,.04) !important;
+}
+
+/* 3) 4 nút: gương lỏng rõ hơn nhưng vẫn giữ góc vuông nhẹ */
+.social.social-icon-btn{
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  border-radius: 16px !important;
+  background:
+    linear-gradient(145deg,
+      rgba(123,156,224,.18) 0%,
+      rgba(49,78,145,.12) 38%,
+      rgba(16,34,78,.28) 68%,
+      rgba(79,105,171,.14) 100%) !important;
+  border: 1px solid rgba(159,190,245,.20) !important;
+  box-shadow:
+    inset 1px 1px 0 rgba(225,239,255,.16),
+    inset -1px -1px 0 rgba(5,15,45,.28),
+    0 8px 24px rgba(0,8,30,.16) !important;
+  backdrop-filter: blur(10px) saturate(135%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(135%) !important;
+}
+
+/* lớp phản quang cong bên trong nút */
+.social.social-icon-btn::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:-45% -18% 34% -24% !important;
+  border-radius:50% !important;
+  background:
+    radial-gradient(ellipse at 38% 68%,
+      rgba(220,235,255,.22) 0%,
+      rgba(133,170,235,.12) 35%,
+      rgba(255,255,255,0) 72%) !important;
+  transform:rotate(-9deg) !important;
+  opacity:.82 !important;
+  pointer-events:none !important;
+  z-index:0 !important;
+}
+
+/* vệt sáng mềm chạy qua khi hover */
+.social.social-icon-btn::after{
+  content:"" !important;
+  position:absolute !important;
+  top:-45% !important;
+  bottom:-45% !important;
+  left:-42% !important;
+  width:28% !important;
+  border-radius:50% !important;
+  background:linear-gradient(100deg,
+    transparent 0%,
+    rgba(210,231,255,.05) 28%,
+    rgba(231,242,255,.24) 50%,
+    rgba(156,190,244,.08) 72%,
+    transparent 100%) !important;
+  filter:blur(5px) !important;
+  transform:skewX(-15deg) !important;
+  opacity:.62 !important;
+  pointer-events:none !important;
+  z-index:1 !important;
+  transition:left .8s ease, opacity .8s ease !important;
+}
+.social.social-icon-btn:hover::after{
+  left:112% !important;
+  opacity:.86 !important;
+}
+.social.social-icon-btn .brand-icon,
+.social.social-icon-btn .social-label{
+  position:relative !important;
+  z-index:2 !important;
+}
+</style>
+
 </head>
 <body>
   <div class="site-box">
