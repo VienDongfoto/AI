@@ -5252,6 +5252,37 @@
 }
 </style>
 
+
+<style>
+/* CHỈ thêm ánh sáng mềm phía dưới 4 logo — không sửa nền, đường chỉ, nút hay chữ */
+.social.social-icon-btn .brand-icon{
+  position: relative !important;
+  z-index: 2 !important;
+  filter:
+    drop-shadow(0 4px 4px rgba(95,145,255,.42))
+    drop-shadow(0 8px 9px rgba(70,110,255,.24)) !important;
+}
+
+/* quầng sáng mềm ngay dưới icon */
+.social.social-icon-btn .brand-icon::after{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  bottom:-8px !important;
+  width:120% !important;
+  height:10px !important;
+  transform:translateX(-50%) !important;
+  border-radius:50% !important;
+  background:radial-gradient(ellipse,
+    rgba(130,170,255,.38) 0%,
+    rgba(80,120,245,.18) 45%,
+    transparent 76%) !important;
+  filter:blur(4px) !important;
+  pointer-events:none !important;
+  z-index:-1 !important;
+}
+</style>
+
 </head>
 <body>
   <div class="site-box">
