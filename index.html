@@ -5043,7 +5043,614 @@
       }
     }
 
+
+
+/* VIEN DONG iOS26 LIQUID GLASS - VISUAL OVERRIDE ONLY */
+html,body{
+background:
+radial-gradient(ellipse at 18% 12%,rgba(35,72,118,.34) 0%,rgba(12,27,48,.16) 28%,transparent 52%),
+radial-gradient(ellipse at 82% 18%,rgba(19,83,105,.26) 0%,rgba(4,25,35,.10) 30%,transparent 54%),
+radial-gradient(ellipse at 58% 78%,rgba(52,63,124,.22) 0%,transparent 48%),
+linear-gradient(145deg,#03070d 0%,#07111e 38%,#050a13 68%,#02050a 100%)!important;
+background-attachment:fixed!important}
+body:before{content:"";position:fixed;inset:-12%;z-index:-2;pointer-events:none;
+background:linear-gradient(126deg,transparent 10%,rgba(105,145,215,.11) 27%,transparent 42%),
+linear-gradient(42deg,transparent 28%,rgba(65,112,176,.10) 47%,transparent 64%);
+filter:blur(28px);transform:rotate(-5deg)}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.75;
+background:radial-gradient(circle at 30% 20%,rgba(151,193,255,.07),transparent 24%),
+radial-gradient(circle at 72% 68%,rgba(108,133,255,.06),transparent 28%)}
+
+.album-card{position:relative!important;isolation:isolate;overflow:hidden!important;
+background:linear-gradient(145deg,rgba(126,166,225,.17),rgba(39,65,103,.12) 38%,rgba(5,15,29,.25))!important;
+border:1px solid rgba(194,220,255,.30)!important;
+box-shadow:inset 0 1px 0 rgba(255,255,255,.26),inset 1px 0 0 rgba(255,255,255,.09),
+inset 0 -1px 0 rgba(0,0,0,.30),0 18px 45px rgba(0,0,0,.38),0 0 28px rgba(68,123,205,.09)!important;
+backdrop-filter:blur(22px) saturate(145%)!important;-webkit-backdrop-filter:blur(22px) saturate(145%)!important}
+.album-card:before{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;pointer-events:none!important;
+background:linear-gradient(120deg,rgba(255,255,255,.21),rgba(255,255,255,.055) 18%,transparent 39%),
+radial-gradient(ellipse at 20% 0%,rgba(183,217,255,.17),transparent 42%)!important;opacity:1!important}
+.album-card .media-shell,.album-card .album-title,.album-card .album-desc{position:relative;z-index:3}
+.album-title{background:linear-gradient(180deg,rgba(74,105,156,.20),rgba(8,20,40,.40))!important;
+border-top:1px solid rgba(210,230,255,.18)!important;
+backdrop-filter:blur(18px) saturate(150%)!important;-webkit-backdrop-filter:blur(18px) saturate(150%)!important;
+text-shadow:0 1px 8px rgba(0,0,0,.72),0 0 14px rgba(150,195,255,.13)!important}
+
+.social{position:relative!important;isolation:isolate;overflow:hidden!important;
+background:linear-gradient(145deg,rgba(170,205,255,.21),rgba(81,118,176,.13) 35%,rgba(12,28,54,.27))!important;
+border:1px solid rgba(205,227,255,.32)!important;
+box-shadow:inset 0 1px 0 rgba(255,255,255,.31),inset 1px 0 0 rgba(255,255,255,.09),
+inset 0 -1px 0 rgba(0,0,0,.28),0 10px 24px rgba(0,0,0,.30),0 0 18px rgba(79,137,220,.08)!important;
+backdrop-filter:blur(24px) saturate(165%)!important;-webkit-backdrop-filter:blur(24px) saturate(165%)!important}
+.social:before{content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;border-radius:inherit!important;opacity:1!important;
+background:linear-gradient(115deg,rgba(255,255,255,.26),rgba(255,255,255,.06) 28%,transparent 52%),
+radial-gradient(circle at 18% 8%,rgba(186,218,255,.19),transparent 38%)!important}
+.social:hover{transform:translateY(-2px) scale(1.015);
+background:linear-gradient(145deg,rgba(190,220,255,.28),rgba(73,113,177,.17),rgba(13,31,59,.31))!important;
+border-color:rgba(225,239,255,.50)!important;
+box-shadow:inset 0 1px 0 rgba(255,255,255,.39),0 14px 30px rgba(0,0,0,.34),0 0 24px rgba(83,151,255,.16)!important}
+@media(max-width:768px){
+html,body{background-attachment:scroll!important}
+.album-card{backdrop-filter:blur(16px) saturate(140%)!important;-webkit-backdrop-filter:blur(16px) saturate(140%)!important}
+.social{backdrop-filter:blur(18px) saturate(150%)!important;-webkit-backdrop-filter:blur(18px) saturate(150%)!important}}
+
+
+
+/* ===== V2: nền iOS26 rõ hơn + sửa nút social ===== */
+
+/* Nền xanh đen có dải cong mềm kiểu iOS */
+html, body{
+  background:
+    radial-gradient(ellipse at 82% 10%, rgba(79,91,177,.38) 0 14%, transparent 34%),
+    radial-gradient(ellipse at 20% 12%, rgba(38,61,125,.34) 0 13%, transparent 35%),
+    radial-gradient(ellipse at 70% 78%, rgba(63,78,150,.30) 0 15%, transparent 38%),
+    linear-gradient(145deg,#050916 0%,#111832 42%,#080d20 70%,#030711 100%) !important;
+  background-attachment: fixed !important;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 18% 48%, transparent 0 26%, rgba(121,145,230,.24) 27%, rgba(47,66,135,.16) 35%, transparent 47%),
+    radial-gradient(ellipse at 78% 34%, transparent 0 29%, rgba(116,137,225,.22) 30%, rgba(43,60,125,.15) 38%, transparent 49%),
+    radial-gradient(ellipse at 55% 86%, transparent 0 24%, rgba(98,120,213,.20) 25%, rgba(43,57,120,.13) 34%, transparent 47%);
+  filter:blur(18px);
+  transform:rotate(-8deg);
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:-15%;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(152deg, transparent 17%, rgba(151,171,255,.10) 26%, rgba(57,76,149,.18) 34%, transparent 45%),
+    linear-gradient(34deg, transparent 42%, rgba(104,128,224,.13) 52%, rgba(45,62,132,.18) 60%, transparent 70%);
+  filter:blur(24px);
+}
+
+/* 4 nút: bo vừa phải, to hơn */
+.social{
+  border-radius:22px !important;
+  min-height:76px !important;
+  font-size:1.18rem !important;
+  font-weight:700 !important;
+  overflow:hidden !important;
+  background:
+    linear-gradient(145deg,rgba(185,211,255,.24),rgba(75,108,169,.15) 42%,rgba(13,28,57,.34)) !important;
+}
+
+/* Xóa lớp vuông lòi ra khi hover */
+.social::before{
+  border-radius:inherit !important;
+  overflow:hidden !important;
+  inset:0 !important;
+}
+
+.social:hover{
+  border-radius:22px !important;
+  overflow:hidden !important;
+  transform:translateY(-2px) scale(1.01) !important;
+}
+
+/* chặn pseudo-element cũ tạo hình vuông */
+.social::after{
+  border-radius:inherit !important;
+  clip-path:inset(0 round 22px) !important;
+}
+
+/* nếu nút nằm trong wrapper thì wrapper không được tạo nền vuông */
+.socials > *,
+.social-grid > *,
+.contact-buttons > *{
+  background:transparent !important;
+}
+
+@media(max-width:768px){
+  html,body{background-attachment:scroll !important}
+  .social{
+    border-radius:18px !important;
+    min-height:72px !important;
+    font-size:1.12rem !important;
+  }
+  .social::after{clip-path:inset(0 round 18px) !important}
+}
+
+
+
+/* ===== V3: chỉnh đúng ý anh — nút ít bo, chữ/icon lớn, nền xanh đen đường chéo ===== */
+
+/* Nền xanh đen với các dải chéo mềm */
+html,body{
+  background:
+    linear-gradient(128deg, transparent 0 18%, rgba(70,86,160,.16) 28%, transparent 39%),
+    linear-gradient(38deg, transparent 0 44%, rgba(79,98,183,.15) 54%, transparent 65%),
+    radial-gradient(ellipse at 84% 14%, rgba(63,75,150,.34) 0%, transparent 34%),
+    radial-gradient(ellipse at 18% 72%, rgba(34,54,117,.28) 0%, transparent 38%),
+    linear-gradient(145deg,#050817 0%,#11172f 42%,#090e22 70%,#030611 100%) !important;
+  background-attachment:fixed !important;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:-18%;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    linear-gradient(132deg, transparent 14%, rgba(125,145,226,.12) 22%, rgba(45,61,132,.22) 31%, transparent 41%),
+    linear-gradient(132deg, transparent 53%, rgba(103,124,213,.13) 61%, rgba(39,55,123,.20) 69%, transparent 78%);
+  filter:blur(20px);
+  transform:rotate(-5deg);
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:-12%;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(34deg, transparent 20%, rgba(67,84,160,.18) 30%, rgba(138,157,235,.08) 37%, transparent 47%),
+    linear-gradient(34deg, transparent 62%, rgba(65,81,157,.18) 70%, transparent 80%);
+  filter:blur(28px);
+}
+
+/* 4 ô: thấp hơn, ít bo hơn */
+.social{
+  min-height:64px !important;
+  height:64px !important;
+  border-radius:14px !important;
+  padding:0 28px !important;
+  gap:16px !important;
+  font-size:1.34rem !important;
+  font-weight:750 !important;
+  overflow:hidden !important;
+}
+
+/* icon/logo Zalo, điện thoại, Facebook, bản đồ lớn theo */
+.social img,
+.social svg,
+.social .icon,
+.social-icon{
+  width:38px !important;
+  height:38px !important;
+  min-width:38px !important;
+  object-fit:contain !important;
+}
+
+/* giữ mọi lớp phản sáng nằm gọn trong nút */
+.social::before,
+.social::after{
+  border-radius:13px !important;
+  inset:0 !important;
+  overflow:hidden !important;
+  clip-path:inset(0 round 13px) !important;
+}
+.social:hover{
+  border-radius:14px !important;
+  overflow:hidden !important;
+  transform:translateY(-2px) scale(1.008) !important;
+}
+
+/* xóa nền vuông của wrapper quanh từng nút */
+.socials > *,
+.social-grid > *,
+.contact-buttons > *{
+  background:transparent !important;
+  box-shadow:none !important;
+}
+
+@media(max-width:768px){
+  html,body{background-attachment:scroll !important}
+  .social{
+    min-height:62px !important;
+    height:62px !important;
+    border-radius:13px !important;
+    padding:0 16px !important;
+    gap:12px !important;
+    font-size:1.16rem !important;
+  }
+  .social img,.social svg,.social .icon,.social-icon{
+    width:34px !important;height:34px !important;min-width:34px !important;
+  }
+  .social::before,.social::after{
+    border-radius:12px !important;
+    clip-path:inset(0 round 12px) !important;
+  }
+}
+
+
+
+/* ===== V4 — chỉnh đúng 3 yêu cầu cuối ===== */
+
+/* 1) NỀN: xanh đen, có dải chéo cong rõ như ảnh iOS tham chiếu */
+html, body{
+  background:
+    linear-gradient(132deg, transparent 0 20%, rgba(76,88,165,.22) 27%, rgba(23,32,77,.10) 35%, transparent 43%),
+    linear-gradient(38deg, transparent 0 43%, rgba(85,101,190,.20) 51%, rgba(31,42,94,.12) 59%, transparent 68%),
+    radial-gradient(ellipse at 88% 8%, rgba(73,82,158,.42) 0%, rgba(31,39,91,.20) 25%, transparent 48%),
+    radial-gradient(ellipse at 12% 78%, rgba(39,52,120,.34) 0%, transparent 44%),
+    linear-gradient(145deg,#050817 0%,#121832 43%,#090e22 72%,#030611 100%) !important;
+  background-attachment:fixed !important;
+}
+body::before{
+  content:"" !important;
+  position:fixed !important;
+  inset:-22% !important;
+  z-index:-2 !important;
+  pointer-events:none !important;
+  opacity:1 !important;
+  background:
+    linear-gradient(135deg,
+      transparent 0 18%,
+      rgba(111,129,220,.08) 20%,
+      rgba(58,73,155,.30) 27%,
+      rgba(21,30,74,.18) 34%,
+      transparent 42%),
+    linear-gradient(135deg,
+      transparent 0 56%,
+      rgba(112,132,225,.09) 58%,
+      rgba(53,68,149,.27) 65%,
+      rgba(19,28,70,.16) 72%,
+      transparent 80%) !important;
+  filter:blur(18px) !important;
+  transform:rotate(-4deg) !important;
+}
+body::after{
+  content:"" !important;
+  position:fixed !important;
+  inset:-15% !important;
+  z-index:-1 !important;
+  pointer-events:none !important;
+  opacity:1 !important;
+  background:
+    radial-gradient(ellipse at 72% 18%, transparent 0 23%, rgba(124,143,230,.13) 25%, rgba(49,63,139,.20) 34%, transparent 45%),
+    radial-gradient(ellipse at 35% 78%, transparent 0 25%, rgba(102,121,213,.11) 27%, rgba(43,56,132,.18) 36%, transparent 48%) !important;
+  filter:blur(24px) !important;
+}
+
+/* 2) GIỮ NGUYÊN KÍCH THƯỚC 4 Ô, chỉ giảm độ bo tròn */
+.social.social-icon-btn,
+body.home-fit .social.social-icon-btn{
+  border-radius:18px !important;
+  overflow:hidden !important;
+}
+
+/* cạnh sáng và cạnh mờ phải cùng một độ bo */
+.social.social-icon-btn::before,
+.social.social-icon-btn::after,
+body.home-fit .social.social-icon-btn::before,
+body.home-fit .social.social-icon-btn::after{
+  border-radius:17px !important;
+  clip-path:inset(0 round 17px) !important;
+}
+
+/* hover không đổi hình dáng */
+.social.social-icon-btn:hover,
+body.home-fit .social.social-icon-btn:hover{
+  border-radius:18px !important;
+  overflow:hidden !important;
+}
+
+/* 3) Chữ/số và logo TO HƠN, nhưng ô không đổi kích thước */
+.social.social-icon-btn .social-label,
+body.home-fit .social.social-icon-btn .social-label{
+  font-size:20px !important;
+  font-weight:750 !important;
+  line-height:1 !important;
+}
+
+.social.social-icon-btn .brand-icon,
+body.home-fit .social.social-icon-btn .brand-icon{
+  width:36px !important;
+  height:36px !important;
+  flex:0 0 36px !important;
+}
+
+/* Zalo có chữ trong icon nên cho rộng hơn một chút */
+.contact-zalo .brand-icon{
+  width:40px !important;
+  flex-basis:40px !important;
+}
+
+@media(max-width:820px), (hover:none) and (pointer:coarse){
+  html,body{background-attachment:scroll !important}
+
+  .social.social-icon-btn,
+  body.home-fit .social.social-icon-btn{
+    border-radius:16px !important;
+  }
+
+  .social.social-icon-btn::before,
+  .social.social-icon-btn::after,
+  body.home-fit .social.social-icon-btn::before,
+  body.home-fit .social.social-icon-btn::after{
+    border-radius:15px !important;
+    clip-path:inset(0 round 15px) !important;
+  }
+
+  .social.social-icon-btn .social-label,
+  body.home-fit .social.social-icon-btn .social-label{
+    font-size:17px !important;
+  }
+
+  .social.social-icon-btn .brand-icon,
+  body.home-fit .social.social-icon-btn .brand-icon{
+    width:31px !important;
+    height:31px !important;
+    flex-basis:31px !important;
+  }
+}
+
+
+
+/* ===== V5 — nút kính vuông bo nhẹ + nền dải cong xanh tím rõ ===== */
+
+/* NỀN: buộc hiển thị dải cong chéo xanh tím rõ hơn */
+html{
+  background:#050817 !important;
+}
+body{
+  position:relative !important;
+  isolation:isolate !important;
+  background:
+    radial-gradient(ellipse at 82% 14%, rgba(77,89,170,.34) 0%, transparent 34%),
+    radial-gradient(ellipse at 18% 80%, rgba(45,59,132,.30) 0%, transparent 40%),
+    linear-gradient(145deg,#050817 0%,#10162e 45%,#080d20 72%,#030611 100%) !important;
+  background-attachment:fixed !important;
+}
+
+/* hai lớp dải cong lớn */
+body::before{
+  content:"" !important;
+  display:block !important;
+  position:fixed !important;
+  left:-20vw !important;
+  top:-34vh !important;
+  width:145vw !important;
+  height:115vh !important;
+  z-index:-2 !important;
+  pointer-events:none !important;
+  opacity:1 !important;
+  border-radius:0 0 55% 45% / 0 0 35% 45% !important;
+  background:
+    linear-gradient(132deg,
+      transparent 0 24%,
+      rgba(57,69,144,.10) 25%,
+      rgba(102,120,218,.34) 32%,
+      rgba(52,65,145,.30) 39%,
+      rgba(22,30,75,.12) 46%,
+      transparent 53%) !important;
+  transform:rotate(-9deg) !important;
+  filter:blur(14px) !important;
+}
+
+body::after{
+  content:"" !important;
+  display:block !important;
+  position:fixed !important;
+  right:-28vw !important;
+  bottom:-34vh !important;
+  width:150vw !important;
+  height:120vh !important;
+  z-index:-1 !important;
+  pointer-events:none !important;
+  opacity:1 !important;
+  border-radius:58% 42% 0 0 / 42% 34% 0 0 !important;
+  background:
+    linear-gradient(36deg,
+      transparent 0 24%,
+      rgba(39,51,123,.10) 25%,
+      rgba(92,111,210,.32) 33%,
+      rgba(54,68,155,.28) 41%,
+      rgba(20,29,73,.12) 48%,
+      transparent 56%) !important;
+  transform:rotate(7deg) !important;
+  filter:blur(16px) !important;
+}
+
+/* 4 NÚT: giống ảnh mẫu — chữ nhật, bo nhẹ, viền kính mảnh */
+.social,
+.social.social-icon-btn,
+body.home-fit .social,
+body.home-fit .social.social-icon-btn{
+  border-radius:12px !important;
+  overflow:hidden !important;
+  background:
+    linear-gradient(145deg,rgba(93,112,178,.48) 0%,rgba(35,52,105,.58) 48%,rgba(14,27,65,.74) 100%) !important;
+  border:1px solid rgba(225,236,255,.82) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 -1px 0 rgba(0,0,0,.28),
+    0 8px 20px rgba(0,0,0,.24) !important;
+}
+
+/* phản sáng nằm gọn, không lòi hình vuông */
+.social::before,
+.social::after,
+.social.social-icon-btn::before,
+.social.social-icon-btn::after,
+body.home-fit .social::before,
+body.home-fit .social::after{
+  border-radius:11px !important;
+  inset:0 !important;
+  clip-path:inset(0 round 11px) !important;
+  overflow:hidden !important;
+}
+
+/* chữ và icon lớn rõ như ảnh mẫu */
+.social .social-label,
+.social.social-icon-btn .social-label,
+body.home-fit .social .social-label{
+  font-size:22px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+}
+
+.social .brand-icon,
+.social.social-icon-btn .brand-icon,
+body.home-fit .social .brand-icon{
+  width:42px !important;
+  height:42px !important;
+  flex:0 0 42px !important;
+  object-fit:contain !important;
+}
+
+.contact-zalo .brand-icon{
+  width:46px !important;
+  flex-basis:46px !important;
+}
+
+.social:hover,
+.social.social-icon-btn:hover,
+body.home-fit .social:hover{
+  border-radius:12px !important;
+  overflow:hidden !important;
+  transform:translateY(-1px) !important;
+  border-color:rgba(245,249,255,.95) !important;
+}
+
+@media(max-width:820px), (hover:none) and (pointer:coarse){
+  body{background-attachment:scroll !important}
+  .social,
+  .social.social-icon-btn,
+  body.home-fit .social{
+    border-radius:11px !important;
+  }
+  .social::before,.social::after{
+    border-radius:10px !important;
+    clip-path:inset(0 round 10px) !important;
+  }
+  .social .social-label,
+  .social.social-icon-btn .social-label{
+    font-size:18px !important;
+  }
+  .social .brand-icon,
+  .social.social-icon-btn .brand-icon{
+    width:36px !important;
+    height:36px !important;
+    flex-basis:36px !important;
+  }
+}
+
 </style>
+
+<style id="vd-v6-final">
+/* V6: 4 nút nhỏ còn 70%, viền kính ẩn nhẹ, nền dải cong xanh tím */
+html, body {
+  background:
+    radial-gradient(ellipse at 18% 8%, rgba(66,86,170,.24) 0%, rgba(24,34,85,.12) 28%, transparent 52%),
+    radial-gradient(ellipse at 88% 28%, rgba(80,66,170,.22) 0%, rgba(26,35,90,.10) 30%, transparent 55%),
+    linear-gradient(145deg, #050914 0%, #091126 45%, #11183b 72%, #070b18 100%) !important;
+  background-attachment: fixed !important;
+}
+body::before, body::after {
+  content:"";
+  position:fixed;
+  z-index:-1;
+  pointer-events:none;
+  border-radius:50%;
+  filter:blur(.2px);
+}
+body::before {
+  width:115vw; height:42vh;
+  left:-28vw; top:18vh;
+  transform:rotate(-20deg);
+  background:linear-gradient(180deg,
+    rgba(74,91,184,.05) 0%,
+    rgba(102,112,220,.25) 44%,
+    rgba(130,137,255,.38) 50%,
+    rgba(61,72,164,.17) 57%,
+    rgba(20,28,75,.02) 100%);
+  box-shadow:0 0 55px rgba(100,110,255,.16);
+}
+body::after {
+  width:105vw; height:36vh;
+  right:-34vw; bottom:4vh;
+  transform:rotate(24deg);
+  background:linear-gradient(180deg,
+    rgba(31,43,105,.02),
+    rgba(81,73,175,.20) 43%,
+    rgba(124,116,245,.32) 50%,
+    rgba(48,55,139,.14) 58%,
+    rgba(10,15,45,.01));
+  box-shadow:0 0 70px rgba(93,88,220,.14);
+}
+
+/* 4 nút */
+.social-social-icon-btn, .social-icon-btn, .contact-phone {
+  transform:scale(.70) !important;
+  transform-origin:center center !important;
+  border-radius:16px !important;
+  border:1px solid rgba(170,205,255,.13) !important;
+  background:
+    radial-gradient(ellipse at 24% 18%, rgba(185,215,255,.18), transparent 46%),
+    linear-gradient(135deg, rgba(67,91,158,.42), rgba(16,31,78,.54)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(235,245,255,.18),
+    inset 0 -1px 0 rgba(72,104,180,.10),
+    0 7px 22px rgba(0,8,35,.16) !important;
+  backdrop-filter:blur(16px) saturate(145%) !important;
+  -webkit-backdrop-filter:blur(16px) saturate(145%) !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+}
+.social-social-icon-btn::before, .social-icon-btn::before, .contact-phone::before {
+  content:"" !important;
+  position:absolute !important;
+  inset:-55% -35% !important;
+  z-index:0 !important;
+  pointer-events:none !important;
+  background:linear-gradient(110deg,
+    transparent 37%,
+    rgba(210,232,255,.03) 43%,
+    rgba(220,238,255,.18) 49%,
+    rgba(185,215,255,.05) 55%,
+    transparent 62%) !important;
+  transform:translateX(-45%) rotate(-7deg) !important;
+  animation:vdGlassSweep 5.8s ease-in-out infinite !important;
+  opacity:.7 !important;
+}
+.social-social-icon-btn > *, .social-icon-btn > *, .contact-phone > * {
+  position:relative !important;
+  z-index:2 !important;
+}
+@keyframes vdGlassSweep {
+  0%,18% { transform:translateX(-52%) rotate(-7deg); opacity:.20; }
+  50% { opacity:.72; }
+  82%,100% { transform:translateX(52%) rotate(-7deg); opacity:.18; }
+}
+@media (max-width: 700px) {
+  .social-social-icon-btn, .social-icon-btn, .contact-phone {
+    transform:scale(.86) !important;
+  }
+}
+</style>
+
 </head>
 <body>
   <div class="site-box">
