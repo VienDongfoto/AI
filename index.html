@@ -5094,6 +5094,93 @@ html,body{background-attachment:scroll!important}
 .album-card{backdrop-filter:blur(16px) saturate(140%)!important;-webkit-backdrop-filter:blur(16px) saturate(140%)!important}
 .social{backdrop-filter:blur(18px) saturate(150%)!important;-webkit-backdrop-filter:blur(18px) saturate(150%)!important}}
 
+
+
+/* ===== V2: nền iOS26 rõ hơn + sửa nút social ===== */
+
+/* Nền xanh đen có dải cong mềm kiểu iOS */
+html, body{
+  background:
+    radial-gradient(ellipse at 82% 10%, rgba(79,91,177,.38) 0 14%, transparent 34%),
+    radial-gradient(ellipse at 20% 12%, rgba(38,61,125,.34) 0 13%, transparent 35%),
+    radial-gradient(ellipse at 70% 78%, rgba(63,78,150,.30) 0 15%, transparent 38%),
+    linear-gradient(145deg,#050916 0%,#111832 42%,#080d20 70%,#030711 100%) !important;
+  background-attachment: fixed !important;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 18% 48%, transparent 0 26%, rgba(121,145,230,.24) 27%, rgba(47,66,135,.16) 35%, transparent 47%),
+    radial-gradient(ellipse at 78% 34%, transparent 0 29%, rgba(116,137,225,.22) 30%, rgba(43,60,125,.15) 38%, transparent 49%),
+    radial-gradient(ellipse at 55% 86%, transparent 0 24%, rgba(98,120,213,.20) 25%, rgba(43,57,120,.13) 34%, transparent 47%);
+  filter:blur(18px);
+  transform:rotate(-8deg);
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:-15%;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(152deg, transparent 17%, rgba(151,171,255,.10) 26%, rgba(57,76,149,.18) 34%, transparent 45%),
+    linear-gradient(34deg, transparent 42%, rgba(104,128,224,.13) 52%, rgba(45,62,132,.18) 60%, transparent 70%);
+  filter:blur(24px);
+}
+
+/* 4 nút: bo vừa phải, to hơn */
+.social{
+  border-radius:22px !important;
+  min-height:76px !important;
+  font-size:1.18rem !important;
+  font-weight:700 !important;
+  overflow:hidden !important;
+  background:
+    linear-gradient(145deg,rgba(185,211,255,.24),rgba(75,108,169,.15) 42%,rgba(13,28,57,.34)) !important;
+}
+
+/* Xóa lớp vuông lòi ra khi hover */
+.social::before{
+  border-radius:inherit !important;
+  overflow:hidden !important;
+  inset:0 !important;
+}
+
+.social:hover{
+  border-radius:22px !important;
+  overflow:hidden !important;
+  transform:translateY(-2px) scale(1.01) !important;
+}
+
+/* chặn pseudo-element cũ tạo hình vuông */
+.social::after{
+  border-radius:inherit !important;
+  clip-path:inset(0 round 22px) !important;
+}
+
+/* nếu nút nằm trong wrapper thì wrapper không được tạo nền vuông */
+.socials > *,
+.social-grid > *,
+.contact-buttons > *{
+  background:transparent !important;
+}
+
+@media(max-width:768px){
+  html,body{background-attachment:scroll !important}
+  .social{
+    border-radius:18px !important;
+    min-height:72px !important;
+    font-size:1.12rem !important;
+  }
+  .social::after{clip-path:inset(0 round 18px) !important}
+}
+
 </style>
 </head>
 <body>
