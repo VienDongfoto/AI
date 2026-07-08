@@ -5067,6 +5067,95 @@
     .site-box::before{top:5vh;}
     .site-box::after{top:56vh;left:-8vw;transform:rotate(-31deg);opacity:.82;}
 </style>
+
+<style>
+/* FIX duy nhất: bỏ quầng sáng vuông khi hover 4 nút liên hệ */
+.social.social-icon-btn{
+  clip-path: inset(0 round 24px);
+  -webkit-clip-path: inset(0 round 24px);
+  contain: paint;
+}
+.social.social-icon-btn::before{
+  inset: 0 !important;
+  border-radius: 24px !important;
+  filter: none !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+.social.social-icon-btn::after{
+  z-index: 1 !important;
+}
+.social.social-icon-btn .brand-icon,
+.social.social-icon-btn .social-label{
+  position: relative;
+  z-index: 2;
+}
+</style>
+
+
+<style>
+/* NỀN IOS XANH ĐEN SÁNG HƠN + NHIỀU DẢI CONG XANH TÍM */
+html, body{
+  background:
+    radial-gradient(ellipse at 14% 8%, rgba(39,92,142,.48) 0%, rgba(20,48,88,.22) 26%, transparent 48%),
+    radial-gradient(ellipse at 88% 18%, rgba(79,72,164,.42) 0%, rgba(37,50,112,.18) 30%, transparent 52%),
+    linear-gradient(145deg, #081525 0%, #0c1d38 42%, #111d45 72%, #081422 100%) !important;
+}
+
+.site-box{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(47,109,164,.34) 0%, transparent 36%),
+    radial-gradient(ellipse at 84% 20%, rgba(91,78,180,.30) 0%, transparent 40%),
+    linear-gradient(145deg, #091625 0%, #0d203c 45%, #121f49 72%, #081422 100%) !important;
+}
+
+.site-box::before,
+.site-box::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  pointer-events:none;
+  border-radius:50%;
+  transform:rotate(-20deg);
+  filter:blur(.2px);
+}
+
+.site-box::before{
+  width:145vw;
+  height:46vw;
+  left:-38vw;
+  top:8vh;
+  border:2px solid rgba(120,143,255,.34);
+  box-shadow:
+    inset 0 0 70px rgba(61,93,180,.16),
+    0 0 34px rgba(75,105,220,.12),
+    0 95px 0 -1px rgba(92,113,232,.18),
+    0 190px 0 -1px rgba(61,102,196,.15),
+    0 285px 0 -1px rgba(103,92,214,.13);
+}
+
+.site-box::after{
+  width:120vw;
+  height:34vw;
+  right:-50vw;
+  top:34vh;
+  border:2px solid rgba(135,151,255,.30);
+  box-shadow:
+    inset 0 0 80px rgba(77,86,174,.15),
+    0 82px 0 -1px rgba(103,100,220,.17),
+    0 164px 0 -1px rgba(73,112,211,.14),
+    0 246px 0 -1px rgba(118,96,224,.12);
+}
+
+.wrap{
+  position:relative;
+  z-index:1;
+}
+</style>
+
 </head>
 <body>
   <div class="site-box">
