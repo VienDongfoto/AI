@@ -5043,6 +5043,29 @@
       }
     }
 
+
+
+    /* NEN IOS XANH DEN - CHI THAY NEN, KHONG DOI CAC THANH PHAN KHAC */
+    html, body, .site-box{
+      background:
+        radial-gradient(ellipse 78% 34% at 18% 8%, rgba(88,91,160,.42) 0%, rgba(38,43,91,.26) 42%, transparent 64%),
+        radial-gradient(ellipse 72% 30% at 90% 25%, rgba(82,99,181,.30) 0%, rgba(39,46,100,.18) 48%, transparent 70%),
+        radial-gradient(ellipse 95% 38% at 20% 92%, rgba(65,72,139,.28) 0%, rgba(28,32,76,.16) 50%, transparent 72%),
+        linear-gradient(145deg,#070914 0%,#0b0e1d 32%,#11152d 62%,#080a15 100%) !important;
+      background-attachment:fixed !important;
+    }
+    .site-box{position:relative;isolation:isolate;overflow:hidden;}
+    .site-box::before, .site-box::after{
+      content:"";position:fixed;z-index:-1;pointer-events:none;
+      width:125vw;height:42vh;left:-28vw;
+      border:2px solid rgba(143,151,255,.28);
+      border-radius:50%;
+      box-shadow:0 0 18px rgba(94,104,220,.18), inset 0 0 22px rgba(118,127,255,.08);
+      transform:rotate(-24deg);
+      background:linear-gradient(180deg,rgba(67,69,128,.18),rgba(14,17,40,.04));
+    }
+    .site-box::before{top:5vh;}
+    .site-box::after{top:56vh;left:-8vw;transform:rotate(-31deg);opacity:.82;}
 </style>
 </head>
 <body>
@@ -5600,44 +5623,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-
-    function mobileSafeImageUrl(url){
-      url = String(url || '').trim();
-      if (!url) return '';
-
-      // Google Drive file links -> direct image delivery URL, ổn định hơn trên Safari/iPhone.
-      let m = url.match(/drive\.google\.com\/file\/d\/([^\/?#]+)/i);
-      if (!m) m = url.match(/[?&]id=([^&#]+)/i);
-      if (m && m[1]) {
-        return 'https://lh3.googleusercontent.com/d/' + encodeURIComponent(m[1]) + '=w1600';
-      }
-
-      return url;
-    }
-
-    function applyMobileImageSafety(img){
-      if (!img) return;
-      img.decoding = 'async';
-      img.referrerPolicy = 'no-referrer';
-      img.setAttribute('referrerpolicy', 'no-referrer');
-    }
-
-    // Áp dụng cả cho ảnh được tạo động sau khi API trả dữ liệu.
-    const vdImageObserver = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        mutation.addedNodes.forEach((node) => {
-          if (!node || node.nodeType !== 1) return;
-          if (node.tagName === 'IMG') applyMobileImageSafety(node);
-          node.querySelectorAll && node.querySelectorAll('img').forEach(applyMobileImageSafety);
-        });
-      });
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('img').forEach(applyMobileImageSafety);
-      vdImageObserver.observe(document.body, { childList:true, subtree:true });
-    });
-
     function loadSiteSettings(){
       fetchSiteSettings()
         .then((settings) => {
@@ -5646,7 +5631,7 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById('siteName').textContent = settings.name || 'NHIẾP ẢNH VIỄN ĐÔNG';
           document.getElementById('siteSubtitle').textContent = settings.subtitle || '';
           if (settings.logoDataUri) {
-            const logoUrl = mobileSafeImageUrl(settings.logoDataUri);
+            const logoUrl = String(settings.logoDataUri);
             document.getElementById('siteLogo').src =
               logoUrl.indexOf('data:') === 0
                 ? logoUrl
@@ -5728,7 +5713,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="media-shell">
           <div class="album-frame">
             ${images.map((img, index) => `
-              <img class="${index === 0 ? 'active' : ''}" src="${escapeAttr(mobileSafeImageUrl(img.thumbUrl))}" referrerpolicy="no-referrer" alt="${escapeAttr(album.title)}" style="object-fit:${escapeAttr(album.coverFit || 'cover')};object-position:${escapeAttr(album.coverPosition || 'center top')};transform-origin:center top;">
+              <img class="${index === 0 ? 'active' : ''}" src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(album.title)}" style="object-fit:${escapeAttr(album.coverFit || 'cover')};object-position:${escapeAttr(album.coverPosition || 'center top')};transform-origin:center top;">
             `).join('')}
           </div>
         </div>
@@ -5828,7 +5813,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const button = document.createElement('button');
         button.className = 'detail-photo';
         button.type = 'button';
-        button.innerHTML = `<img src="${escapeAttr(mobileSafeImageUrl(img.thumbUrl))}" referrerpolicy="no-referrer" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
+        button.innerHTML = `<img src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
         button.addEventListener('click', () => openLightbox(index));
         grid.appendChild(button);
       });
@@ -5855,7 +5840,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const button = document.createElement('button');
             button.className = 'detail-photo';
             button.type = 'button';
-            button.innerHTML = `<img src="${escapeAttr(mobileSafeImageUrl(img.thumbUrl))}" referrerpolicy="no-referrer" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
+            button.innerHTML = `<img src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(img.name || album.title)}" loading="lazy" style="object-fit:${escapeAttr(album.detailFit || 'cover')};object-position:${escapeAttr(album.detailPosition || 'center top')};">`;
             button.addEventListener('click', () => openLightbox(index));
             grid.appendChild(button);
           });
