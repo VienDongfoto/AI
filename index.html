@@ -5263,6 +5263,79 @@ body.home-fit .socials{
 }
 </style>
 
+
+<style id="liquid-glass-album-cards">
+/* Chỉ tạo hiệu ứng gương lỏng nổi khối cho 3 ô album; không tác động ảnh */
+.album-card{
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:hidden !important;
+  background:
+    linear-gradient(145deg,
+      rgba(255,255,255,.13) 0%,
+      rgba(255,255,255,.035) 30%,
+      rgba(91,136,255,.055) 62%,
+      rgba(255,255,255,.075) 100%) !important;
+  border:1px solid rgba(177,218,255,.20) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.20),
+    inset 0 -1px 0 rgba(77,130,255,.13),
+    inset 18px 0 34px rgba(255,255,255,.025),
+    0 16px 38px rgba(0,0,0,.24),
+    0 2px 8px rgba(82,147,255,.08) !important;
+  backdrop-filter:blur(16px) saturate(135%) !important;
+  -webkit-backdrop-filter:blur(16px) saturate(135%) !important;
+}
+
+.album-card::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:-45% -30% auto -35% !important;
+  width:120% !important;
+  height:95% !important;
+  z-index:0 !important;
+  pointer-events:none !important;
+  border-radius:50% !important;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(255,255,255,.16) 0%,
+      rgba(151,199,255,.075) 32%,
+      rgba(255,255,255,0) 70%) !important;
+  transform:rotate(-9deg) !important;
+  filter:blur(8px) !important;
+  opacity:.72 !important;
+}
+
+.album-card::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  z-index:0 !important;
+  pointer-events:none !important;
+  border-radius:inherit !important;
+  background:
+    linear-gradient(112deg,
+      rgba(255,255,255,.11) 0%,
+      rgba(255,255,255,.025) 22%,
+      transparent 42%,
+      rgba(102,153,255,.035) 72%,
+      rgba(255,255,255,.055) 100%) !important;
+  box-shadow:inset 0 0 22px rgba(139,190,255,.045) !important;
+}
+
+/* Giữ nội dung và ảnh nguyên vẹn, chỉ đặt trên lớp kính */
+.album-card > *{
+  position:relative;
+  z-index:1;
+}
+.album-card .album-frame,
+.album-card .album-frame img{
+  filter:none !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+</style>
+
 </head>
 <body>
   <div class="site-box">
