@@ -5263,79 +5263,85 @@ body.home-fit .socials{
 }
 </style>
 
-
-
-
-<style id="ultra-clear-glass">
-/* Kính thật mỏng, gần như hoàn toàn trong suốt */
+<style id="minimal-liquid-glass">
+/* Chỉ phủ kính; giữ nguyên kích thước, bố cục, bo góc và font hiện tại */
 .album-card,
-.social-link{
-  position:relative !important;
-  isolation:isolate !important;
-  overflow:hidden !important;
-
-  background:rgba(255,255,255,.008) !important;
-  border:1px solid rgba(205,225,255,.18) !important;
-
+body.home-fit .album-card{
+  background:
+    radial-gradient(110% 48% at 15% 0%,
+      rgba(255,255,255,.20) 0%,
+      rgba(174,205,255,.07) 42%,
+      transparent 70%),
+    linear-gradient(145deg,
+      rgba(66,91,154,.16),
+      rgba(10,18,45,.18) 56%,
+      rgba(50,70,128,.12)) !important;
+  border-color:rgba(190,215,255,.24) !important;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.12),
-    inset 0 -1px 0 rgba(120,165,255,.045),
-    0 2px 8px rgba(0,0,0,.07) !important;
-
-  backdrop-filter:blur(.35px) brightness(1.015) !important;
-  -webkit-backdrop-filter:blur(.35px) brightness(1.015) !important;
+    inset 1px 1px 0 rgba(255,255,255,.20),
+    inset -1px -1px 0 rgba(3,9,28,.20),
+    0 18px 42px rgba(0,0,0,.25) !important;
+  -webkit-backdrop-filter:blur(18px) saturate(155%) !important;
+  backdrop-filter:blur(18px) saturate(155%) !important;
 }
 
-/* Chỉ một vệt phản chiếu rất mỏng trên mặt kính */
-.album-card::before,
-.social-link::before{
-  content:"" !important;
-  position:absolute !important;
-  pointer-events:none !important;
-  z-index:0 !important;
-  left:-8% !important;
-  top:-52% !important;
-  width:72% !important;
-  height:78% !important;
-  border-radius:50% !important;
-  background:radial-gradient(
-    ellipse at center,
-    rgba(255,255,255,.055) 0%,
-    rgba(255,255,255,.018) 40%,
-    transparent 72%
-  ) !important;
-  transform:rotate(-8deg) !important;
-  filter:blur(5px) !important;
-  opacity:.55 !important;
+.album-card .album-title,
+body.home-fit .album-card .album-title{
+  background:
+    linear-gradient(180deg,
+      rgba(27,43,85,.20),
+      rgba(5,12,31,.18)) !important;
+  color:#f5f8ff !important;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.18),
+    0 2px 7px rgba(0,0,0,.42) !important;
 }
 
-.album-card::after,
-.social-link::after{
-  content:"" !important;
-  position:absolute !important;
-  inset:0 !important;
-  pointer-events:none !important;
-  z-index:0 !important;
-  border-radius:inherit !important;
-  background:linear-gradient(
-    115deg,
-    rgba(255,255,255,.025),
-    transparent 30%,
-    transparent 76%,
-    rgba(150,190,255,.012)
-  ) !important;
+.album-card:hover,
+body.home-fit .album-card:hover{
+  background:
+    radial-gradient(110% 48% at 15% 0%,
+      rgba(255,255,255,.25) 0%,
+      rgba(174,205,255,.09) 42%,
+      transparent 70%),
+    linear-gradient(145deg,
+      rgba(74,101,168,.18),
+      rgba(10,18,45,.20) 56%,
+      rgba(56,78,140,.14)) !important;
 }
 
-.album-card > *,
-.social-link > *{
-  position:relative;
-  z-index:1;
+.social.social-icon-btn,
+body.home-fit .social.social-icon-btn{
+  background:
+    radial-gradient(100% 75% at 18% 0%,
+      rgba(255,255,255,.22) 0%,
+      rgba(178,207,255,.07) 48%,
+      transparent 72%),
+    linear-gradient(145deg,
+      rgba(74,103,170,.15),
+      rgba(10,22,57,.18) 62%,
+      rgba(55,78,142,.12)) !important;
+  border-color:rgba(188,214,255,.23) !important;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,.20),
+    inset -1px -1px 0 rgba(3,9,28,.22),
+    0 8px 24px rgba(0,8,30,.16) !important;
+  -webkit-backdrop-filter:blur(16px) saturate(155%) !important;
+  backdrop-filter:blur(16px) saturate(155%) !important;
 }
 
-.album-card img{
-  filter:none !important;
-  opacity:1 !important;
-  mix-blend-mode:normal !important;
+.social.social-icon-btn:hover,
+body.home-fit .social.social-icon-btn:hover{
+  background:
+    radial-gradient(100% 75% at 18% 0%,
+      rgba(255,255,255,.27) 0%,
+      rgba(178,207,255,.09) 48%,
+      transparent 72%),
+    linear-gradient(145deg,
+      rgba(82,113,184,.18),
+      rgba(12,25,61,.20) 62%,
+      rgba(62,87,152,.14)) !important;
+  border-color:rgba(218,233,255,.32) !important;
 }
 </style>
 
