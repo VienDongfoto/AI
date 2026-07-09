@@ -5264,75 +5264,88 @@ body.home-fit .socials{
 </style>
 
 
-<style id="liquid-glass-album-cards">
-/* Chỉ tạo hiệu ứng gương lỏng nổi khối cho 3 ô album; không tác động ảnh */
-.album-card{
+
+<style id="true-transparent-liquid-glass">
+/* Kính trong thật sự cho 3 ô album và 4 nút liên hệ */
+.album-card,
+.social-link{
   position:relative !important;
   isolation:isolate !important;
   overflow:hidden !important;
+
+  /* nền gần như trong suốt để thấy rõ wallpaper phía sau */
   background:
-    linear-gradient(145deg,
-      rgba(255,255,255,.13) 0%,
-      rgba(255,255,255,.035) 30%,
-      rgba(91,136,255,.055) 62%,
-      rgba(255,255,255,.075) 100%) !important;
-  border:1px solid rgba(177,218,255,.20) !important;
+    linear-gradient(135deg,
+      rgba(255,255,255,.075) 0%,
+      rgba(255,255,255,.022) 30%,
+      rgba(110,155,255,.018) 68%,
+      rgba(255,255,255,.045) 100%) !important;
+
+  border:1px solid rgba(190,220,255,.25) !important;
+
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.20),
-    inset 0 -1px 0 rgba(77,130,255,.13),
-    inset 18px 0 34px rgba(255,255,255,.025),
-    0 16px 38px rgba(0,0,0,.24),
-    0 2px 8px rgba(82,147,255,.08) !important;
-  backdrop-filter:blur(16px) saturate(135%) !important;
-  -webkit-backdrop-filter:blur(16px) saturate(135%) !important;
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -1px 0 rgba(120,170,255,.12),
+    inset 1px 0 0 rgba(255,255,255,.08),
+    0 8px 22px rgba(0,0,0,.16),
+    0 1px 5px rgba(100,165,255,.08) !important;
+
+  backdrop-filter:blur(3px) saturate(112%) brightness(1.04) !important;
+  -webkit-backdrop-filter:blur(3px) saturate(112%) brightness(1.04) !important;
 }
 
-.album-card::before{
+/* phản chiếu mềm như mặt kính cong */
+.album-card::before,
+.social-link::before{
   content:"" !important;
   position:absolute !important;
-  inset:-45% -30% auto -35% !important;
-  width:120% !important;
-  height:95% !important;
   z-index:0 !important;
   pointer-events:none !important;
+  left:-12% !important;
+  top:-42% !important;
+  width:82% !important;
+  height:100% !important;
   border-radius:50% !important;
-  background:
-    radial-gradient(ellipse at center,
-      rgba(255,255,255,.16) 0%,
-      rgba(151,199,255,.075) 32%,
-      rgba(255,255,255,0) 70%) !important;
-  transform:rotate(-9deg) !important;
-  filter:blur(8px) !important;
-  opacity:.72 !important;
+  background:radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,.15) 0%,
+    rgba(210,230,255,.065) 38%,
+    rgba(255,255,255,0) 72%
+  ) !important;
+  transform:rotate(-10deg) !important;
+  filter:blur(7px) !important;
+  opacity:.62 !important;
 }
 
-.album-card::after{
+.album-card::after,
+.social-link::after{
   content:"" !important;
   position:absolute !important;
   inset:0 !important;
   z-index:0 !important;
   pointer-events:none !important;
   border-radius:inherit !important;
-  background:
-    linear-gradient(112deg,
-      rgba(255,255,255,.11) 0%,
-      rgba(255,255,255,.025) 22%,
-      transparent 42%,
-      rgba(102,153,255,.035) 72%,
-      rgba(255,255,255,.055) 100%) !important;
-  box-shadow:inset 0 0 22px rgba(139,190,255,.045) !important;
+  background:linear-gradient(
+    112deg,
+    rgba(255,255,255,.09) 0%,
+    rgba(255,255,255,.025) 22%,
+    transparent 44%,
+    rgba(130,175,255,.018) 76%,
+    rgba(255,255,255,.04) 100%
+  ) !important;
 }
 
-/* Giữ nội dung và ảnh nguyên vẹn, chỉ đặt trên lớp kính */
-.album-card > *{
+.album-card > *,
+.social-link > *{
   position:relative;
   z-index:1;
 }
-.album-card .album-frame,
-.album-card .album-frame img{
+
+/* tuyệt đối không phủ filter lên ảnh */
+.album-card img{
   filter:none !important;
-  backdrop-filter:none !important;
-  -webkit-backdrop-filter:none !important;
+  opacity:1 !important;
+  mix-blend-mode:normal !important;
 }
 </style>
 
