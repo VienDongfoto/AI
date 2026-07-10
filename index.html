@@ -5906,6 +5906,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadSiteSettings(){
       fetchSiteSettings()
         .then((settings) => {
+          alert('NỀN GITHUB = ' + (settings && settings.backgroundUrl));
           if (!settings) return;
           document.title = settings.name || 'Nhiếp Ảnh Viễn Đông';
           document.getElementById('siteName').textContent = settings.name || 'NHIẾP ẢNH VIỄN ĐÔNG';
