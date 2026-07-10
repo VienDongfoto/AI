@@ -5917,6 +5917,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? logoUrl
                 : logoUrl + (logoUrl.indexOf('?') >= 0 ? '&' : '?') + 'v=' + Date.now();
           }
+          if (settings.backgroundUrl) {
+  const bgUrl = String(settings.backgroundUrl);
+  document.documentElement.style.setProperty(
+    '--main-bg-image',
+    `url("${bgUrl}")`
+  );
+}
         })
         .catch(() => {});
     }
