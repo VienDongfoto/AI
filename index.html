@@ -5266,6 +5266,102 @@ body.has-drive-bg .site-box{
 }
 </style>
 
+<style id="vd-liquid-glass-cards">
+/* Lớp Liquid Glass chỉ cho các ô album và nút liên hệ.
+   Nội dung/ảnh trong ô giữ nguyên, lớp sáng luôn nằm phía dưới nội dung. */
+#albumPages .album-card,
+.socials .social.social-icon-btn{
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:hidden !important;
+  background:
+    radial-gradient(128% 88% at 8% -18%,
+      rgba(255,255,255,.38) 0%,
+      rgba(220,237,255,.17) 23%,
+      rgba(157,197,255,.045) 47%,
+      transparent 70%),
+    radial-gradient(96% 70% at 100% 108%,
+      rgba(104,151,255,.19) 0%,
+      transparent 63%),
+    linear-gradient(135deg,
+      rgba(230,243,255,.13) 0%,
+      rgba(84,124,201,.10) 42%,
+      rgba(12,27,71,.24) 100%) !important;
+  border:1px solid rgba(230,246,255,.42) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.62),
+    inset 1px 0 0 rgba(255,255,255,.26),
+    inset -1px -1px 0 rgba(64,124,232,.27),
+    inset 0 -12px 24px rgba(3,18,58,.16),
+    0 13px 34px rgba(3,13,46,.25),
+    0 0 0 1px rgba(116,184,255,.10) !important;
+  -webkit-backdrop-filter:blur(28px) saturate(145%) brightness(1.08) !important;
+  backdrop-filter:blur(28px) saturate(145%) brightness(1.08) !important;
+}
+
+/* Phản sáng cong của mặt kính và viền khúc xạ. */
+#albumPages .album-card::before,
+.socials .social.social-icon-btn::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  z-index:0 !important;
+  border-radius:inherit !important;
+  pointer-events:none !important;
+  opacity:1 !important;
+  transform:none !important;
+  filter:none !important;
+  background:
+    linear-gradient(113deg,
+      rgba(255,255,255,.31) 0%,
+      rgba(255,255,255,.09) 16%,
+      transparent 34%),
+    radial-gradient(75% 45% at 18% 2%,
+      rgba(255,255,255,.30) 0%,
+      rgba(255,255,255,.065) 45%,
+      transparent 72%),
+    linear-gradient(180deg,
+      rgba(255,255,255,.11) 0%,
+      transparent 26%,
+      rgba(115,180,255,.045) 73%,
+      rgba(255,255,255,.13) 100%) !important;
+}
+
+/* Không phủ lên ảnh: ảnh và chữ vẫn đứng trên lớp kính. */
+#albumPages .album-card .media-shell,
+#albumPages .album-card .album-title,
+#albumPages .album-card .album-desc,
+.socials .social.social-icon-btn .brand-icon,
+.socials .social.social-icon-btn .social-label{
+  position:relative;
+  z-index:2;
+}
+
+@media (hover:hover){
+  #albumPages .album-card:hover,
+  .socials .social.social-icon-btn:hover{
+    border-color:rgba(247,252,255,.68) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.74),
+      inset 1px 0 0 rgba(255,255,255,.34),
+      inset -1px -1px 0 rgba(74,145,255,.40),
+      inset 0 -12px 24px rgba(3,18,58,.15),
+      0 18px 40px rgba(3,13,46,.30),
+      0 0 23px rgba(154,219,255,.20) !important;
+    -webkit-backdrop-filter:blur(31px) saturate(158%) brightness(1.12) !important;
+    backdrop-filter:blur(31px) saturate(158%) brightness(1.12) !important;
+  }
+}
+
+@media (max-width:820px){
+  #albumPages .album-card,
+  .socials .social.social-icon-btn{
+    -webkit-backdrop-filter:blur(20px) saturate(138%) brightness(1.06) !important;
+    backdrop-filter:blur(20px) saturate(138%) brightness(1.06) !important;
+  }
+}
+</style>
+
 </head>
 <body>
   <div class="site-box">
