@@ -5907,6 +5907,7 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('orientationchange', () => setTimeout(updateHomeScale, 220), {passive:true});
 
       loadSiteSettings();
+      window.setInterval(loadSiteSettings, 60000);
       loadAlbums();
 
       document.getElementById('prevPage').addEventListener('click', () => showAlbumPage(state.currentPage - 1));
@@ -5980,7 +5981,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    function applySiteBackground(url){
+    function versionedBackgroundUrl(url, version){
+      const source = String(url || '').trim();
+      const cacheVersion = String(version || '').trim();
+
+      if (!source || !cacheVersion) return source;
+
+      return source + (source.indexOf('?') >= 0 ? '&' : '?') + 'v=' + encodeURIComponent(cacheVersion);
+    }
+
+    function applySiteBackground(url, version){
       const bgUrl = String(url || '').trim();
 
       if (!bgUrl) {
@@ -5990,7 +6000,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const cssValue = cssUrlValue(bgUrl);
+      const backgroundUrl = versionedBackgroundUrl(bgUrl, version);
+      const cssValue = cssUrlValue(backgroundUrl);
       const img = new Image();
       img.referrerPolicy = 'no-referrer';
 
@@ -6002,7 +6013,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       img.onload = applyNow;
       img.onerror = applyNow;
-      img.src = bgUrl;
+      img.src = backgroundUrl;
     }
 
     function loadSiteSettings(){
@@ -6012,7 +6023,10 @@ document.addEventListener('DOMContentLoaded', () => {
           document.title = settings.name || 'Nhiếp Ảnh Viễn Đông';
           document.getElementById('siteName').textContent = settings.name || 'NHIẾP ẢNH VIỄN ĐÔNG';
           document.getElementById('siteSubtitle').textContent = settings.subtitle || '';
-          applySiteBackground(settings.backgroundImageUrl || settings.backgroundUrl || settings.backgroundUrlAlt || '');
+          applySiteBackground(
+            settings.backgroundImageUrl || settings.backgroundUrl || settings.backgroundUrlAlt || '',
+            settings.backgroundVersion || ''
+          );
           if (settings.logoDataUri) {
             const logoUrl = String(settings.logoDataUri);
             document.getElementById('siteLogo').src =
