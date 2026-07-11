@@ -5362,6 +5362,51 @@ body.has-drive-bg .site-box{
 }
 </style>
 
+<style id="vd-mobile-fixed-contacts">
+/* Điện thoại: 4 nút liên hệ luôn ở đáy màn hình; địa chỉ vẫn là nội dung cuộn bình thường. */
+.social-address span{
+  display:inline;
+}
+
+@media (max-width:820px), (hover:none) and (pointer:coarse){
+  body{
+    padding-bottom:180px !important;
+  }
+
+  .wrap,
+  body.home-fit .wrap{
+    padding-bottom:190px !important;
+  }
+
+  .socials,
+  body.home-fit .socials{
+    position:fixed !important;
+    left:50% !important;
+    bottom:max(10px, env(safe-area-inset-bottom)) !important;
+    z-index:900 !important;
+    width:calc(100% - 20px) !important;
+    max-width:470px !important;
+    margin:0 !important;
+    padding:10px !important;
+    transform:translateX(-50%) !important;
+  }
+
+  .social-address,
+  body.home-fit .social-address{
+    width:100% !important;
+    margin:20px 0 0 !important;
+    padding:14px 8px 0 !important;
+    font-size:14px !important;
+    line-height:1.4 !important;
+    text-align:center !important;
+  }
+
+  .social-address span{
+    display:block;
+  }
+}
+</style>
+
 <!-- Favicon tệp riêng: hoạt động ổn định trên Chrome/Safari điện thoại. -->
 <link rel="icon" type="image/png" sizes="256x256" href="favicon.png?v=20260711-1" />
 <link rel="shortcut icon" type="image/png" href="favicon.png?v=20260711-1" />
@@ -5467,7 +5512,10 @@ body.has-drive-bg .site-box{
           </span>
           <span class="social-label">Bản đồ</span>
         </a>
-        <div class="social-address">Đ/C: 13 Lê Hồng Phong, phường Phan Thiết, tỉnh Lâm Đồng.</div>
+      </div>
+      <div class="social-address">
+        <span>Đ/C: 13 Lê Hồng Phong</span>
+        <span>phường Phan Thiết, tỉnh Lâm Đồng.</span>
       </div>
     </div>
   </div>
@@ -5842,10 +5890,6 @@ document.addEventListener('DOMContentLoaded', () => {
       ensureCleanLogoReady();
       setupLogoCanvasSweep();
       setupPhoneDialLink();
-      document.querySelectorAll('.social-address').forEach((el) => {
-        el.textContent = 'Đ/C: 13 Lê Hồng Phong, phường Phan Thiết, tỉnh Lâm Đồng.';
-      });
-
       const logoImg = document.getElementById('siteLogo');
       const logoReadyWrap = document.getElementById('siteLogoWrap');
       if (logoImg && logoReadyWrap) {
