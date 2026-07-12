@@ -5377,6 +5377,20 @@ body.has-drive-bg .site-box{
       body.home-fit .socials{
         gap:10px !important;
         padding:14px 14px 10px !important;
+        position:fixed !important;
+        left:50% !important;
+        bottom:max(8px, env(safe-area-inset-bottom)) !important;
+        z-index:80 !important;
+        width:min(calc(100vw - 20px), 470px) !important;
+        margin:0 !important;
+        transform:translateX(-50%) !important;
+        box-shadow:0 14px 34px rgba(0,0,0,.18) !important;
+      }
+
+      /* Chừa chỗ để cụm liên hệ ghim dưới không che ảnh cuối trang. */
+      #homeView,
+      body.home-fit #homeView{
+        padding-bottom:182px !important;
       }
 
       .social.social-icon-btn,
