@@ -5362,46 +5362,6 @@ body.has-drive-bg .site-box{
 }
 </style>
 
-<style id="vd-drive-folder-card">
-#albumPages .drive-folder-card{
-  cursor:pointer;
-}
-
-#albumPages .drive-folder-card .album-frame{
-  display:grid !important;
-  place-items:center !important;
-  background:
-    radial-gradient(circle at 50% 30%, rgba(255,255,255,.38), transparent 34%),
-    linear-gradient(145deg, rgba(16,34,78,.94), rgba(7,17,43,.98)) !important;
-}
-
-#albumPages .drive-folder-visual{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:16px;
-  color:#f7fbff;
-  font-family:Georgia, "Times New Roman", serif;
-  font-size:clamp(16px, 1.35vw, 22px);
-  font-weight:700;
-  letter-spacing:.04em;
-  text-transform:uppercase;
-  text-shadow:0 3px 10px rgba(0,0,0,.28);
-}
-
-#albumPages .drive-folder-icon{
-  display:block;
-  width:min(46%, 138px);
-  height:auto;
-  filter:drop-shadow(0 12px 16px rgba(0,0,0,.26));
-}
-
-#albumPages .drive-folder-card:focus-visible{
-  outline:3px solid rgba(214,240,255,.92);
-  outline-offset:4px;
-}
-</style>
-
 <!-- Favicon tệp riêng: hoạt động ổn định trên Chrome/Safari điện thoại. -->
 <link rel="icon" type="image/png" sizes="256x256" href="favicon.png?v=20260711-1" />
 <link rel="shortcut icon" type="image/png" href="favicon.png?v=20260711-1" />
@@ -5695,11 +5655,17 @@ body.has-drive-bg .site-box{
     const DRIVE_FOLDER_CARD = {
       id: 'thu-muc-anh-google-drive',
       title: 'IN ẢNH ĐẸP',
-      desc: 'Mở thư mục ảnh trên Google Drive',
-      externalUrl: 'https://drive.google.com/drive/folders/1gwoEeegJ4LZk7t7B6MSa_YqzLSqArZ9z?usp=share_link',
+      desc: 'Xem ảnh in mẫu',
       coverImages: [
         {
           thumbUrl: 'https://drive.google.com/thumbnail?id=1mc2Wjg3rlDFY2qAsrS7rUGj-7uyB7pnd&sz=w1200'
+        }
+      ],
+      images: [
+        {
+          name: 'In ảnh đẹp',
+          thumbUrl: 'https://drive.google.com/thumbnail?id=1mc2Wjg3rlDFY2qAsrS7rUGj-7uyB7pnd&sz=w1200',
+          fullUrl: 'https://drive.google.com/thumbnail?id=1mc2Wjg3rlDFY2qAsrS7rUGj-7uyB7pnd&sz=w2000'
         }
       ]
     };
@@ -6254,30 +6220,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('article');
       card.className = 'album-card';
       card.dataset.album = album.id;
-      const isExternalLink = Boolean(album.externalUrl);
-      if (isExternalLink) card.classList.add('drive-folder-card');
       card.style.setProperty('--cover-fit', album.coverFit || 'cover');
       card.style.setProperty('--cover-position', album.coverPosition || 'center center');
 
       const images = album.coverImages && album.coverImages.length
         ? album.coverImages
         : [];
-      const showDriveFolderVisual = isExternalLink && !images.length;
 
       card.innerHTML = `
         <span class="sharp-border"></span>
         <div class="media-shell">
           <div class="album-frame">
-            ${showDriveFolderVisual ? `
-              <div class="drive-folder-visual" aria-hidden="true">
-                <svg class="drive-folder-icon" viewBox="0 0 120 104" focusable="false">
-                  <path fill="#0F9D58" d="M42 4h36l38 66H80z" />
-                  <path fill="#4285F4" d="M42 4 4 70l18 30 38-66z" />
-                  <path fill="#F4B400" d="m22 100 18-30h76l-18 30z" />
-                </svg>
-                <span>Google Drive</span>
-              </div>
-            ` : images.map((img, index) => `
+            ${images.map((img, index) => `
               <img class="${index === 0 ? 'active' : ''}" src="${escapeAttr(img.thumbUrl)}" alt="${escapeAttr(album.title)}" style="object-fit:${escapeAttr(album.coverFit || 'cover')};object-position:${escapeAttr(album.coverPosition || 'center top')};transform-origin:center top;">
             `).join('')}
           </div>
@@ -6286,26 +6240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="album-desc">${escapeHtml(album.desc || '')}</div>
       `;
 
-      const openCard = () => {
-        if (isExternalLink) {
-          window.open(album.externalUrl, '_blank', 'noopener,noreferrer');
-          return;
-        }
-
-        openAlbum(album.id);
-      };
-
-      card.addEventListener('click', openCard);
-
-      if (isExternalLink) {
-        card.setAttribute('role', 'link');
-        card.tabIndex = 0;
-        card.addEventListener('keydown', (event) => {
-          if (event.key !== 'Enter' && event.key !== ' ') return;
-          event.preventDefault();
-          openCard();
-        });
-      }
+      card.addEventListener('click', () => openAlbum(album.id));
 
       return card;
     }
@@ -6360,6 +6295,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>`;
       window.scrollTo({top: 0, behavior: 'smooth'});
+
+      if (albumMeta && albumMeta.images) {
+        renderAlbumDetail(albumMeta);
+        return;
+      }
 
       fetchAlbumImages(albumId)
         .then(renderAlbumDetail)
