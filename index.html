@@ -5517,6 +5517,20 @@ body.has-drive-bg .site-box{
       border-radius:10px !important;
     }
 
+    /* Làm dòng địa chỉ và biểu tượng ghim dễ nhìn hơn trên web. */
+    .social-address,
+    body.home-fit .social-address{
+      font-size:clamp(16px, 1.4vw, 20px) !important;
+      font-weight:800 !important;
+    }
+
+    .address-icon,
+    body.home-fit .address-icon{
+      width:28px !important;
+      height:28px !important;
+      flex:0 0 28px !important;
+    }
+
     /* Điện thoại: giữ 4 nút liên hệ trên cùng một hàng, dễ chạm và dễ đọc. */
     @media (max-width:820px), (hover:none) and (pointer:coarse){
       /* Bốn ô album tràn hết bề ngang màn hình khi lướt điện thoại. */
@@ -5586,15 +5600,15 @@ body.has-drive-bg .site-box{
         margin-right:-3px !important;
         gap:9px !important;
         padding:8px 9px !important;
-        font-size:clamp(13px, 3.3vw, 16px) !important;
+        font-size:clamp(14px, 3.5vw, 17px) !important;
         font-weight:900 !important;
       }
 
       .address-icon,
       body.home-fit .address-icon{
-        width:26px !important;
-        height:26px !important;
-        flex:0 0 26px !important;
+        width:30px !important;
+        height:30px !important;
+        flex:0 0 30px !important;
       }
 
       /* Giữ chiều cao phần ảnh album như thiết kế ban đầu trên điện thoại. */
