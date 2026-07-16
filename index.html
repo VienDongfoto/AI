@@ -5558,10 +5558,17 @@ body.has-drive-bg .site-box{
         white-space:nowrap !important;
       }
 
-      /* Các ô album dài hơn nhẹ, giữ nguyên bố cục và giao diện máy tính. */
+      /* Các ô album cao hơn rõ rệt, giữ nguyên bố cục và giao diện máy tính. */
       .album-frame,
       body.home-fit .album-frame{
-        aspect-ratio:4 / 6 !important;
+        aspect-ratio:4 / 7 !important;
+      }
+
+      /* Cụm liên hệ ghim đáy cần ít đệm hơn để không tạo khoảng trống lớn
+         sau ô album cuối khi người xem cuộn tới cuối trang. */
+      #homeView,
+      body.home-fit #homeView{
+        padding-bottom:122px !important;
       }
     }
   </style>
