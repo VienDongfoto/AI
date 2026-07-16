@@ -5599,6 +5599,18 @@ body.has-drive-bg .site-box{
         padding:10px 10px 12px !important;
       }
 
+      /* Trên điện thoại nhỏ, phần album tràn nhẹ qua hai mép màn hình.
+         Các ô ảnh sẽ không còn khoảng hở ở hai bên khi người xem lướt. */
+      @media (max-width:560px){
+        .album-page,
+        body.home-fit .album-page{
+          width:calc(100% + 40px) !important;
+          max-width:none !important;
+          margin-left:-20px !important;
+          margin-right:-20px !important;
+        }
+      }
+
       /* Cụm liên hệ ghim đáy cần ít đệm hơn để không tạo khoảng trống lớn
          sau ô album cuối khi người xem cuộn tới cuối trang. */
       #homeView,
