@@ -5558,10 +5558,10 @@ body.has-drive-bg .site-box{
         white-space:nowrap !important;
       }
 
-      /* Các ô album cao hơn rõ rệt, giữ nguyên bố cục và giao diện máy tính. */
+      /* Giữ chiều cao phần ảnh album như thiết kế ban đầu trên điện thoại. */
       .album-frame,
       body.home-fit .album-frame{
-        aspect-ratio:4 / 7.35 !important;
+        aspect-ratio:4 / 5.7 !important;
         border-radius:16px 16px 0 0 !important;
       }
 
@@ -5570,6 +5570,13 @@ body.has-drive-bg .site-box{
       .album-card .sharp-border,
       body.home-fit .album-card .sharp-border{
         border-radius:16px !important;
+      }
+
+      /* Riêng bốn thanh tên album cao hơn khoảng 1/3 để rõ và cân đối hơn. */
+      .album-card .album-title,
+      body.home-fit .album-card .album-title{
+        min-height:62px !important;
+        padding:10px 10px 12px !important;
       }
 
       /* Cụm liên hệ ghim đáy cần ít đệm hơn để không tạo khoảng trống lớn
