@@ -5508,6 +5508,64 @@ body.has-drive-bg .site-box{
     }
   </style>
 
+  <style id="vd-mobile-four-contact-buttons">
+    /* Điện thoại: giữ 4 nút liên hệ trên cùng một hàng, dễ chạm và dễ đọc. */
+    @media (max-width:820px), (hover:none) and (pointer:coarse){
+      .socials,
+      body.home-fit .socials{
+        grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+        gap:6px !important;
+        width:min(calc(100vw - 12px), 470px) !important;
+        padding:10px 6px 8px !important;
+      }
+
+      .social.social-icon-btn,
+      body.home-fit .social.social-icon-btn,
+      .contact-phone,
+      body.home-fit .contact-phone{
+        height:70px !important;
+        padding:6px 3px !important;
+        gap:3px !important;
+        flex-direction:column !important;
+        justify-content:center !important;
+        align-items:center !important;
+        font-size:clamp(11px, 3vw, 14px) !important;
+        line-height:1.05 !important;
+      }
+
+      .social.social-icon-btn .brand-icon,
+      body.home-fit .social.social-icon-btn .brand-icon{
+        width:28px !important;
+        height:28px !important;
+        flex:0 0 28px !important;
+      }
+
+      .social.social-icon-btn .social-label,
+      body.home-fit .social.social-icon-btn .social-label,
+      .contact-phone .phone-label{
+        width:100% !important;
+        max-width:100% !important;
+        text-align:center !important;
+        align-items:center !important;
+        justify-content:center !important;
+        overflow:visible !important;
+        font-size:inherit !important;
+        line-height:1.05 !important;
+      }
+
+      .contact-phone .phone-number{
+        font-size:clamp(10px, 2.75vw, 13px) !important;
+        white-space:nowrap !important;
+      }
+
+      /* Các ô album dài hơn nhẹ, giữ nguyên bố cục và giao diện máy tính. */
+      .album-frame,
+      body.home-fit .album-frame{
+        aspect-ratio:4 / 6 !important;
+      }
+    }
+  </style>
+
   <style id="vd-liquid-glass-title-bars">
     /* Liquid Glass cho bốn thanh tiêu đề album; không đổi kích thước hay bố cục. */
     #albumPages .album-card > .album-title{
