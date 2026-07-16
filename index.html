@@ -5578,6 +5578,25 @@ body.has-drive-bg .site-box{
         white-space:nowrap !important;
       }
 
+      /* Dòng địa chỉ và biểu tượng vị trí lớn hơn, trải sát cụm liên hệ. */
+      .social-address,
+      body.home-fit .social-address{
+        width:calc(100% + 6px) !important;
+        margin-left:-3px !important;
+        margin-right:-3px !important;
+        gap:9px !important;
+        padding:8px 9px !important;
+        font-size:clamp(13px, 3.3vw, 16px) !important;
+        font-weight:900 !important;
+      }
+
+      .address-icon,
+      body.home-fit .address-icon{
+        width:26px !important;
+        height:26px !important;
+        flex:0 0 26px !important;
+      }
+
       /* Giữ chiều cao phần ảnh album như thiết kế ban đầu trên điện thoại. */
       .album-frame,
       body.home-fit .album-frame{
