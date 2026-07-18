@@ -5668,6 +5668,26 @@ body.has-drive-bg .site-box{
     }
   </style>
 
+  <style id="vd-album-photo-ratio">
+    /* Khung ảnh của bốn album luôn đúng tỷ lệ dọc 4:6, trên máy tính và điện thoại. */
+    #homeView .album-card,
+    body.home-fit #homeView .album-card{
+      height:auto !important;
+      aspect-ratio:auto !important;
+    }
+
+    #homeView .album-card .media-shell,
+    body.home-fit #homeView .album-card .media-shell{
+      flex:0 0 auto !important;
+    }
+
+    #homeView .album-frame,
+    body.home-fit #homeView .album-frame{
+      height:auto !important;
+      aspect-ratio:4 / 6 !important;
+    }
+  </style>
+
   <style id="vd-liquid-glass-title-bars">
     /* Liquid Glass cho bốn thanh tiêu đề album; không đổi kích thước hay bố cục. */
     #albumPages .album-card > .album-title{
