@@ -5242,15 +5242,25 @@ body{
   background-image:none !important;
 }
 
-html.has-drive-bg,
-body.has-drive-bg,
-body.has-drive-bg .site-box{
+/* Chỉ body vẽ ảnh nền. Tránh nhiều lớp nền fixed chồng lên nhau trên máy tính. */
+html.has-drive-bg{
+  background-color:#000 !important;
+  background-image:none !important;
+}
+
+body.has-drive-bg{
   background-color:transparent !important;
   background-image:var(--main-bg-image) !important;
   background-position:center center !important;
   background-size:cover !important;
   background-repeat:no-repeat !important;
   background-attachment:fixed !important;
+  opacity:1 !important;
+}
+
+body.has-drive-bg .site-box{
+  background-color:transparent !important;
+  background-image:none !important;
   opacity:1 !important;
 }
 
@@ -5966,6 +5976,7 @@ body.has-drive-bg .site-box{
         // này để lấy ảnh mới từ thư mục mà không cần sửa lại index.html.
         if (api === 'siteSettings' && BACKGROUND_DRIVE_FOLDER_URL) {
           query.set('backgroundDriveFolder', BACKGROUND_DRIVE_FOLDER_URL);
+          query.set('cacheBust', String(Date.now()));
         }
 
         Object.keys(params || {}).forEach((key) => {
@@ -6366,6 +6377,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return 'url(' + JSON.stringify(String(url || '')) + ')';
     }
 
+    function freshAssetUrl(url){
+      const value = String(url || '').trim();
+      if (!value) return value;
+
+      const separator = value.indexOf('?') >= 0 ? '&' : '?';
+      return value + separator + 'v=' + Date.now();
+    }
+
     function setMainBackgroundValue(value){
       document.documentElement.style.setProperty('--main-bg-image', value);
       document.body.style.setProperty('--main-bg-image', value);
@@ -6386,7 +6405,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const cssValue = cssUrlValue(bgUrl);
+      // Google Drive có thể giữ ảnh cũ trong bộ nhớ đệm khi file vừa được thay.
+      // Thêm dấu thời gian để luôn tải đúng ảnh nền mới nhất từ Drive.
+      const freshBgUrl = freshAssetUrl(bgUrl);
+      const cssValue = cssUrlValue(freshBgUrl);
       const img = new Image();
       img.referrerPolicy = 'no-referrer';
 
@@ -6398,7 +6420,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       img.onload = applyNow;
       img.onerror = applyNow;
-      img.src = bgUrl;
+      img.src = freshBgUrl;
     }
 
     function loadSiteSettings(){
